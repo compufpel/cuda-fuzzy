@@ -50,5 +50,11 @@ FuzzyNumber* FuzzyNumber::operator* (FuzzyNumber other) {
 }
 
 
+FuzzyNumber* FuzzyNumber::operator/ (FuzzyNumber other) {
+
+	return new FuzzyNumber(this->Begin() / other.Begin(), this->End() / other.End());
+	
+}
+
 
 

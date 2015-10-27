@@ -60,7 +60,7 @@ SCENARIO( "We can subtract two Fuzzy Number", "[fuzzy]" ) {
             }
         }
         
-    }
+    }           
 }
 
 SCENARIO( "We can multiply two Fuzzy Number", "[fuzzy]" ) {
@@ -73,6 +73,27 @@ SCENARIO( "We can multiply two Fuzzy Number", "[fuzzy]" ) {
         WHEN( "we can multiply both" ) {
             
             FuzzyNumber* result = *fuzzyNumber * *fuzzyNumber2;
+            
+
+            THEN( "the result must be equals 12, 6" ) {
+                REQUIRE( result->Begin() == 12 );
+                REQUIRE( result->End() == 6 );
+            }
+        }
+        
+    }
+}
+
+SCENARIO( "We can division two Fuzzy Number", "[fuzzy]" ) {
+
+    GIVEN( "2 Fuzzy Numbers" ) {
+        
+        FuzzyNumber* fuzzyNumber = new FuzzyNumber(24, 24);
+        FuzzyNumber* fuzzyNumber2 = new FuzzyNumber(2, 4);
+        
+        WHEN( "we can division both" ) {
+            
+            FuzzyNumber* result = *fuzzyNumber / *fuzzyNumber2;
             
 
             THEN( "the result must be equals 12, 6" ) {
