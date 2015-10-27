@@ -40,3 +40,25 @@ SCENARIO( "We can sum two Fuzzy Number", "[fuzzy]" ) {
         
     }
 }
+
+
+SCENARIO( "We can subtract two Fuzzy Number", "[fuzzy]" ) {
+
+    GIVEN( "2 Fuzzy Numbers" ) {
+        
+        FuzzyNumber* fuzzyNumber = new FuzzyNumber(0, 10);
+        FuzzyNumber* fuzzyNumber2 = new FuzzyNumber(-4, 8);
+        
+        WHEN( "we can subtract both" ) {
+            
+            FuzzyNumber* result = *fuzzyNumber - *fuzzyNumber2;
+            
+
+            THEN( "the result must be equals -8, 14" ) {
+                REQUIRE( result->Begin() == -8 );
+                REQUIRE( result->End() == 14 );
+            }
+        }
+        
+    }
+}

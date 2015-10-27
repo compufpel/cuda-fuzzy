@@ -21,6 +21,11 @@ FuzzyNumber* FuzzyNumber::operator+ (FuzzyNumber other) {
 	
 }
 
+FuzzyNumber* FuzzyNumber::operator- (FuzzyNumber other) {
+
+	return new FuzzyNumber(this->Begin() - other.End(), this->End() - other.Begin());
+	
+}
 
 
 
