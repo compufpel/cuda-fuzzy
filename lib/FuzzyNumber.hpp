@@ -13,7 +13,7 @@ class FuzzyNumber {
 		float End();
 		FuzzyNumber* operator+ (FuzzyNumber other);
 		FuzzyNumber* operator- (FuzzyNumber other);
-		FuzzyNumber* operator* (FuzzyNumber* other);
+		FuzzyNumber* operator* (FuzzyNumber other);
 		FuzzyNumber* operator/ (FuzzyNumber* other);
 	
 };
