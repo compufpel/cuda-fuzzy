@@ -1,5 +1,6 @@
 #include "FuzzyNumber.hpp"
 
+
 FuzzyNumber::FuzzyNumber (float begin, float end) {
 
 	this->begin = begin;
