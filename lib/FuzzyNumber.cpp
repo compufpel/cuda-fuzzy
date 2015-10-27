@@ -1,6 +1,6 @@
 #include "FuzzyNumber.hpp"
 
-
+//gg commit gurizada
 FuzzyNumber::FuzzyNumber (float begin, float end) {
 
 	this->begin = begin;
