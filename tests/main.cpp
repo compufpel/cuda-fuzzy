@@ -104,3 +104,24 @@ SCENARIO( "We can division two Fuzzy Number", "[fuzzy]" ) {
         
     }
 }
+
+
+SCENARIO( "We can inverse two Fuzzy Number", "[fuzzy]" ) {
+
+    GIVEN( "2 Fuzzy Numbers" ) {
+        
+        FuzzyNumber* fuzzyNumber = new FuzzyNumber(1, 10);
+        
+        WHEN( "we can inverse" ) {
+            
+            FuzzyNumber* result = !(*fuzzyNumber);
+            
+
+            THEN( "the result must be equals 1, 0.1" ) {
+                REQUIRE( result->Begin() == 0.1f );
+                REQUIRE( result->End() == 1 );
+            }
+        }
+        
+    }
+}

@@ -47,7 +47,7 @@ FuzzyNumber* FuzzyNumber::operator* (FuzzyNumber other) {
 	if(max < r4){ max = r4; }
 	if(min > r4){ min = r4; }
 
-	return new FuzzyNumber(max, min);
+	return new FuzzyNumber(max, min); 
 }
 
 
@@ -59,3 +59,19 @@ FuzzyNumber* FuzzyNumber::operator/ (FuzzyNumber other) {
 
 
 
+FuzzyNumber* FuzzyNumber::operator!(){
+    
+    float min=this->Begin(), max=this->End(), aux;
+    if(min != 0 and max!= 0){
+        min=1/min;
+        max=1/max;
+    } // faltou tratar divisão por zero
+        
+    if(min>max){ 
+        aux=min; 
+        min=max; 
+        max=aux;
+    }
+        return new FuzzyNumber(min,max);
+	
+}

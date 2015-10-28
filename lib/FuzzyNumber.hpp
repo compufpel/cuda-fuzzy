@@ -15,7 +15,7 @@ class FuzzyNumber {
 		FuzzyNumber* operator- (FuzzyNumber other);
 		FuzzyNumber* operator* (FuzzyNumber other);
 		FuzzyNumber* operator/ (FuzzyNumber other);
-	
+                FuzzyNumber* operator! ();
 };
 
 #endif
