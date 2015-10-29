@@ -1,11 +1,8 @@
 #include "FuzzyNumber.hpp"
 
-//gg commit gurizada
 FuzzyNumber::FuzzyNumber (float begin, float end) {
-
 	this->begin = begin;
 	this->end = end;
-	
 }
 
 float FuzzyNumber::Begin() {
@@ -17,13 +14,10 @@ float FuzzyNumber::End() {
 }
 
 FuzzyNumber* FuzzyNumber::operator+ (FuzzyNumber other) {
-
 	return new FuzzyNumber(this->Begin() + other.Begin(), this->End() + other.End());
-	
 }
 
 FuzzyNumber* FuzzyNumber::operator- (FuzzyNumber other) {
-
 	return new FuzzyNumber(this->Begin() - other.End(), this->End() - other.Begin());
 	
 }

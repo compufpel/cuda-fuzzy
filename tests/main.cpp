@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "./Catch/single_include/catch.hpp"
 #include "../lib/FuzzyNumber.hpp"
+#include "../lib/Operation.hpp"
 
 SCENARIO( "We can create FuzzyNumbers", "[fuzzy]" ) {
 
@@ -123,5 +124,66 @@ SCENARIO( "We can inverse two Fuzzy Number", "[fuzzy]" ) {
             }
         }
         
+    }
+}
+
+SCENARIO( "We can use operations", "[fuzzy]" ) {
+
+    GIVEN( "4 operations" ) {
+        
+        FuzzyNumber* fuzzyNumber = new FuzzyNumber(1, 4);
+        FuzzyNumber* fuzzyNumber2 = new FuzzyNumber(-2, 3);
+		
+		Operation* operation = new Operation(fuzzyNumber, fuzzyNumber2, '+');
+		Operation* operation2 = new Operation(fuzzyNumber, fuzzyNumber2, '-');
+		Operation* operation3 = new Operation(fuzzyNumber, fuzzyNumber2, '*');
+		Operation* operation4 = new Operation(fuzzyNumber, fuzzyNumber2, '/');
+        
+        WHEN( "we execute the sum operation" ) {
+            
+            FuzzyNumber* result = operation->execute();
+            
+            THEN( "the result must be equals 1, 0.1" ) {
+                REQUIRE( result->Begin() == -1 );
+                REQUIRE( result->End() == 7 );
+            }
+			
+			
+        }
+		
+		WHEN( "we execute the minus operation" ) {
+            
+            FuzzyNumber* result = operation2->execute();
+            
+            THEN( "the result must be equals 1, 0.1" ) {
+                REQUIRE( result->Begin() == -2 );
+                REQUIRE( result->End() == 6 );
+            }	
+			
+        }
+		
+		WHEN( "we execute the multiplication operation" ) {
+            
+            FuzzyNumber* result = operation3->execute();
+            
+            THEN( "the result must be equals 1, 0.1" ) {
+                REQUIRE( result->Begin() == 12 );
+                REQUIRE( result->End() == -2 );
+            }	
+			
+        }
+		
+		WHEN( "we execute the division operation" ) {
+            
+            FuzzyNumber* result = operation4->execute();
+            
+            THEN( "the result must be equals 1, 0.1" ) {
+                REQUIRE( result->Begin() == -0.5 );
+            }	
+			
+        }
+        
+		
+		
     }
 }
