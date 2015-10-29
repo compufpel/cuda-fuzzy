@@ -2,6 +2,11 @@
 #include "./Catch/single_include/catch.hpp"
 #include "../lib/FuzzyNumber.hpp"
 #include "../lib/Operation.hpp"
+#include "../lib/BulkOperation.hpp"
+#include <iostream>
+#include <vector>
+
+using namespace std;
 
 SCENARIO( "We can create FuzzyNumbers", "[fuzzy]" ) {
 
@@ -182,8 +187,48 @@ SCENARIO( "We can use operations", "[fuzzy]" ) {
             }	
 			
         }
+		
+    }
+}
+
+SCENARIO( "We can do a bulk of operations", "[fuzzy]" ) {
+
+    GIVEN( "a bulk of operations" ) {
         
+        FuzzyNumber* fuzzyNumber = new FuzzyNumber(1, 10);
+        FuzzyNumber* fuzzyNumber2 = new FuzzyNumber(-2, 4);
 		
+		Operation* operation = new Operation(fuzzyNumber, fuzzyNumber2, '+');
+		Operation* operation2 = new Operation(fuzzyNumber, fuzzyNumber2, '-');
+		Operation* operation3 = new Operation(fuzzyNumber, fuzzyNumber2, '*');
+		Operation* operation4 = new Operation(fuzzyNumber, fuzzyNumber2, '/');
 		
+		vector<Operation*> operations(4);
+		
+		operations[0] = operation;
+		operations[1] = operation2;
+		operations[2] = operation3;
+		operations[3] = operation4;
+		
+		BulkOperation* bulk = new BulkOperation(operations);
+        
+        WHEN( "we can execute them all" ) {
+            
+			vector<FuzzyNumber*> result = bulk->execute();            
+
+            THEN( "the result must be fine" ) {
+				
+				REQUIRE( result[0]->Begin() == -1 );
+				REQUIRE( result[0]->End() == 14 );
+				REQUIRE( result[1]->Begin() == -3 );
+				REQUIRE( result[1]->End() == 12 );
+				REQUIRE( result[2]->Begin() == 40 );
+				REQUIRE( result[2]->End() == -2 );
+				REQUIRE( result[3]->Begin() == -0.5 );
+				REQUIRE( result[3]->End() == 2.5 );
+				
+            }
+        }
+        
     }
 }
