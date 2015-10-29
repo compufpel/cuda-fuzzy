@@ -143,7 +143,7 @@ SCENARIO( "We can use operations", "[fuzzy]" ) {
             
             FuzzyNumber* result = operation->execute();
             
-            THEN( "the result must be equals 1, 0.1" ) {
+            THEN( "the result must be equals -1, 7" ) {
                 REQUIRE( result->Begin() == -1 );
                 REQUIRE( result->End() == 7 );
             }
@@ -155,7 +155,7 @@ SCENARIO( "We can use operations", "[fuzzy]" ) {
             
             FuzzyNumber* result = operation2->execute();
             
-            THEN( "the result must be equals 1, 0.1" ) {
+            THEN( "the result must be equals -2, 6" ) {
                 REQUIRE( result->Begin() == -2 );
                 REQUIRE( result->End() == 6 );
             }	
@@ -166,7 +166,7 @@ SCENARIO( "We can use operations", "[fuzzy]" ) {
             
             FuzzyNumber* result = operation3->execute();
             
-            THEN( "the result must be equals 1, 0.1" ) {
+            THEN( "the result must be equals 12, -2" ) {
                 REQUIRE( result->Begin() == 12 );
                 REQUIRE( result->End() == -2 );
             }	
@@ -177,7 +177,7 @@ SCENARIO( "We can use operations", "[fuzzy]" ) {
             
             FuzzyNumber* result = operation4->execute();
             
-            THEN( "the result must be equals 1, 0.1" ) {
+            THEN( "the result must be equals -0.5" ) {
                 REQUIRE( result->Begin() == -0.5 );
             }	
 			

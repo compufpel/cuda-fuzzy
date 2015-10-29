@@ -8,6 +8,7 @@ class FuzzyNumber {
 		float begin, end;
 	
 	public:
+	
 		FuzzyNumber (float begin, float end);
 		float Begin();
 		float End();
@@ -16,6 +17,7 @@ class FuzzyNumber {
 		FuzzyNumber* operator* (FuzzyNumber other);
 		FuzzyNumber* operator/ (FuzzyNumber other);
 		FuzzyNumber* operator! ();
+	
 };
 
 #endif
