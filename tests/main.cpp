@@ -261,6 +261,16 @@ SCENARIO( "We can do FuzzyLogic", "[fuzzy]" ) {
                 REQUIRE( result > 0.95 );
             }
         }
+
+        WHEN( "we do 'not3' operation to 0.3" ) {
+            
+            double result = fuzzy->Not3(x);
+            
+
+            THEN( "the result must be equals 0.7" ) {
+                REQUIRE( result > 0.99 );
+            }
+        }
         
     }
 }
