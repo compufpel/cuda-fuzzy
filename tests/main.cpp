@@ -258,7 +258,7 @@ SCENARIO( "We can do FuzzyLogic", "[fuzzy]" ) {
             
 
             THEN( "the result must be equals 0.7" ) {
-                REQUIRE( result == 0.7 );
+                REQUIRE( result > 0.95 );
             }
         }
         
