@@ -1,5 +1,5 @@
 test:
-	g++ lib/*.cpp tests/main.cpp  -o tests/teste
+	g++ lib/FuzzyNumber/*.cpp lib/FuzzyLogic/*.cpp tests/main.cpp  -o tests/teste
 	./tests/teste
 	
 

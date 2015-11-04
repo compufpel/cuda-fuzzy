@@ -1,8 +1,9 @@
 #define CATCH_CONFIG_MAIN
 #include "./Catch/single_include/catch.hpp"
-#include "../lib/FuzzyNumber.hpp"
-#include "../lib/Operation.hpp"
-#include "../lib/BulkOperation.hpp"
+#include "../lib/FuzzyLogic/FuzzyLogic.hpp"
+#include "../lib/FuzzyNumber/FuzzyNumber.hpp"
+#include "../lib/FuzzyNumber/Operation.hpp"
+#include "../lib/FuzzyNumber/BulkOperation.hpp"
 #include <iostream>
 #include <vector>
 
@@ -227,6 +228,37 @@ SCENARIO( "We can do a bulk of operations", "[fuzzy]" ) {
 				REQUIRE( result[3]->Begin() == -0.5 );
 				REQUIRE( result[3]->End() == 2.5 );
 				
+            }
+        }
+        
+    }
+}
+
+SCENARIO( "We can do FuzzyLogic", "[fuzzy]" ) {
+
+    GIVEN( "2 doubles and a FuzzyLogic object" ) {
+        
+        FuzzyLogic* fuzzy = new FuzzyLogic();
+        double x = 0.3;
+        double y = 0.7;
+
+        WHEN( "we do 'not' operation to 0.3" ) {
+            
+            double result = fuzzy->Not(x);
+            
+
+            THEN( "the result must be equals 0.7" ) {
+                REQUIRE( result == 0.7 );
+            }
+        }
+
+        WHEN( "we do 'not2' operation to 0.3" ) {
+            
+            double result = fuzzy->Not2(x);
+            
+
+            THEN( "the result must be equals 0.7" ) {
+                REQUIRE( result == 0.7 );
             }
         }
         
