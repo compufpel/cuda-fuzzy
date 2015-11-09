@@ -13,11 +13,9 @@ class FuzzyLogic {
 
 		double And(double x, double y);
 		double And2(double x, double y);
-		double And3(double x, double y);
 
 		double Or(double x, double y);
 		double Or2(double x, double y);
-		double Or3(double x, double y);
 
 };
 

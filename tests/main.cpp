@@ -1,9 +1,10 @@
 #define CATCH_CONFIG_MAIN
 #include "./Catch/single_include/catch.hpp"
-#include "../lib/FuzzyLogic/FuzzyLogic.hpp"
 #include "../lib/FuzzyNumber/FuzzyNumber.hpp"
 #include "../lib/FuzzyNumber/Operation.hpp"
 #include "../lib/FuzzyNumber/BulkOperation.hpp"
+#include "../lib/FuzzyLogic/FuzzyLogic.hpp"
+#include "../lib/FuzzyLogic/BulkLogic.hpp"
 #include <iostream>
 #include <vector>
 
@@ -234,43 +235,23 @@ SCENARIO( "We can do a bulk of operations", "[fuzzy]" ) {
     }
 }
 
-SCENARIO( "We can do FuzzyLogic", "[fuzzy]" ) {
+SCENARIO( "We can make a bulk of fuzzy logics", "[fuzzy]" ) {
 
-    GIVEN( "2 doubles and a FuzzyLogic object" ) {
+    GIVEN( "a vector of doubles" ) {
         
-        FuzzyLogic* fuzzy = new FuzzyLogic();
-        double x = 0.3;
-        double y = 0.7;
-
-        WHEN( "we do 'not' operation to 0.3" ) {
+        BulkLogic *bulk = new BulkLogic();
+        vector<double> v (1000, 0.5);
+        
+        
+        WHEN( "we use the not(!) operator on vector" ) {
             
-            double result = fuzzy->Not(x);
+            vector<double> result = bulk->Not(v);
             
-
-            THEN( "the result must be equals 0.7" ) {
-                REQUIRE( result == 0.7 );
-            }
-        }
-
-        WHEN( "we do 'not2' operation to 0.3" ) {
-            
-            double result = fuzzy->Not2(x);
-            
-
-            THEN( "the result must be equals 0.7" ) {
-                REQUIRE( result > 0.95 );
-            }
-        }
-
-        WHEN( "we do 'not3' operation to 0.3" ) {
-            
-            double result = fuzzy->Not3(x);
-            
-
-            THEN( "the result must be equals 0.7" ) {
-                REQUIRE( result > 0.99 );
+            THEN( "the result should be 0.6" ) {
+                REQUIRE( result[0] == 0.5 );
             }
         }
         
     }
 }
+
