@@ -19,7 +19,7 @@ double FuzzyLogic::And(double x, double y) {
 }
 
 double FuzzyLogic::And2(double x, double y) {
-	return x*y;
+	return x * y;
 }
 
 double FuzzyLogic::Or(double x, double y) {
@@ -27,5 +27,5 @@ double FuzzyLogic::Or(double x, double y) {
 }
 
 double FuzzyLogic::Or2(double x, double y) {
-	return (x+y)-(x*y);
+	return ( x + y ) - ( x * y );
 }

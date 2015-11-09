@@ -253,5 +253,24 @@ SCENARIO( "We can make a bulk of fuzzy logics", "[fuzzy]" ) {
         }
         
     }
+
+    GIVEN( "2 vector of doubles" ) {
+        
+        BulkLogic *bulk = new BulkLogic();
+        vector<double> v (1000, 0.3);
+        vector<double> v2 (1000, 0.5);
+        
+        
+        WHEN( "we use the and operator on both" ) {
+            
+            vector<double> result = bulk->And(v, v2);
+            
+            THEN( "the result should be 0.6" ) {
+                REQUIRE( result[0] == 0.3 );
+                REQUIRE( result[1] == 0.3 );
+            }
+        }
+        
+    }
 }
 
