@@ -51,8 +51,10 @@ Resumo aqui.
 	
 % GPU %
 
-	A fim de obter-se computação com bom desempenho, é importante fazer uso dos vários núcleos de processamento os quais são disponibilizados nos sistemas de computação atuais -- para poder por em prática o uso do paralelismo. Neste contexto, encaixam-se as GPUs (\textit{Graphical Processor Units}), as quais são componentes com alto poder de paralelismo~\cite{sengupta:07}. Porém, é importante ressaltar que as GPUs são reservadas a obter bom desempenho com aplicações que possuem determinadas características~\cite{owens:08} que incluem: (i) Requisitos computacionais grandes, (ii) Paralelismo nas aplicações e (iii) maior importância ao \textit{throughput} do que a latência.
-	
+	A fim de obter-se computação com bom desempenho, é importante fazer uso dos vários núcleos de processamento os quais são disponibilizados nos sistemas de computação atuais -- para poder por em prática o uso do paralelismo. Neste contexto, encaixam-se as GPUs (\textit{Graphical Processor Units}), as quais são componentes com alto poder de paralelismo~\cite{sengupta:07}. Porém, é importante ressaltar que as GPUs são reservadas a obter bom desempenho com aplicações que possuem determinadas características~\cite{owens:08} que incluem: (i) Requisitos computacionais grandes, (ii) Paralelismo nas aplicações e (iii) maior importância ao \textit{throughput} do que a latência. Destacam-se alguns exemplos práticos bem-sucedidos que utilizam CUDA:
+Análise do fluxo de tráfego aéreo, através do uso do poder computacional de CUDA, foi possível reduzir o tempo de análise do tráfego aéreo nacional
+de dez minutos para três segundos. Outro exemplo relevante é o ganho de performace em simulações moleculares NAMD(dinâmica molecular em nanoescala), o ganho de performace foi possível graças as arquiteturas paralelas das GPUs~\cite{nvidia:15}.
+
 % O trabalho - Acredito que deverá ser melhor explorado esta parte! %	
 
 	Tendo estes conceitos discutidos, o objetivo deste trabalho é descrever uma biblioteca de lógica \textit{fuzzy} voltada para GPUs, a fim de verificar como pode ser efetuado uma implementação que consiga extrair paralelismo deste tipo de arquiteturas.
