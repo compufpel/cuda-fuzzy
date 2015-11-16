@@ -30,5 +30,4 @@ double* d_BulkOr(double* v, double* w, int size);
 __global__ void kernel_Or2(double* array, double* array2, double* result, int size);
 double* d_BulkOr2(double* v, double* w, int size);
 
-
 #endif
