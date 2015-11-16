@@ -1,0 +1,5 @@
+g++ lib/*.cpp tests/main.cpp  -o tests/teste
+./tests/teste
+===============================================================================
+All tests passed (8 assertions in 4 test cases)
+
