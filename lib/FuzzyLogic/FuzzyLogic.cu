@@ -1,4 +1,4 @@
-#include "FuzzyLogic.hpp"
+#include "FuzzyLogic.cuh"
 
 double Not(double x) {
 	return 1 - x;

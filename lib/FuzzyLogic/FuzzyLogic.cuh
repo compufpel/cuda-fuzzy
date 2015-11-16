@@ -3,6 +3,9 @@
 #include <cstdlib>
 #include <cmath>
 
+#include <cuda.h>
+#include <cuda_runtime.h>
+
 double Not(double x);
 double Not2(double x);
 double Not3(double x);

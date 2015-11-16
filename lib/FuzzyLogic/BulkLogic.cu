@@ -1,19 +1,32 @@
-#include "BulkLogic.hpp"
+#include "BulkLogic.cuh"
 
-// __global__ void CudaNot(double* array, double* result, int size) {
+// double* d_BulkNot(double* v, int size) {
+	
+// 	double* result = (double*)malloc(sizeof(double) * size);
+// 	double* d_result; 
+// 	double* d_array; 
 
-// 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
+// 	unsigned int memsize = sizeof(double) * size;
 
-// 	if(idx < size) {
-// 		result[idx] = this->fuzzy->Not(array[idx]);
-// 	}
+// 	cudaMalloc((void**) &d_result, memsize);
+// 	cudaMalloc((void**) &d_array, memsize);
+	
 
+// 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);
+
+// 	cuda_Not<<< size, size >>>(d_array, d_result, size);
+
+// 	cudaDeviceSynchronize();
+
+// 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost);
+
+// 	return result;
 // }
-
 
 double* h_BulkNot(double* v, int size) {
 	
 	double* result = (double*)malloc(sizeof(double) * size);
+
 
 	for (int i = 0; i < size; i++) {
 		result[i] = Not(v[i]);
@@ -21,6 +34,7 @@ double* h_BulkNot(double* v, int size) {
 
 	return result;
 }
+
 
 double* h_BulkNot2(double* v, int size) {
 	double* result = (double*)malloc(sizeof(double) * size);
@@ -82,4 +96,13 @@ double* h_BulkOr2(double* v, double* w, int size) {
 
 	return result;
 }
-				
+
+// __global__ void kernel_Not(double* array, double* result, int size) {
+
+// 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+// 	if(idx < size) {
+// 		result[idx] = d_Not(array[idx]);
+// 	}
+// }
+// 				
