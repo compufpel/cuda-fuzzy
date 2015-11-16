@@ -1,29 +1,25 @@
 #ifndef bulk_logic
 #define bulk_logic
+#include <cstdlib>
 #include <cmath>
 #include <vector>
 #include "FuzzyLogic.hpp"
 
+//#include <cuda.h>
+//#include <cuda_runtime.h>
+
 using namespace std;
 
-class BulkLogic {
-	
-	private:
-		FuzzyLogic *fuzzy;
-	
-	public:
-		
-		BulkLogic ();
-		vector<double> Not(vector<double> v);
-		vector<double> Not2(vector<double> v);
-		vector<double> Not3(vector<double> v);
+//__global__ void CudaNot(double* array, double* result, int size);
 
-		vector<double> And(vector<double> v, vector<double> w);
-		vector<double> And2(vector<double> v, vector<double> w);
+double* h_BulkNot(double* v, int size);
+double* h_BulkNot2(double* v, int size);
+double* h_BulkNot3(double* v, int size);
 
-		vector<double> Or(vector<double> v, vector<double> w);
-		vector<double> Or2(vector<double> v, vector<double> w);
+double* h_BulkAnd(double* v, double* w, int size);
+double* h_BulkAnd2(double* v, double* w, int size);
 
-};
+double* h_BulkOr(double* v, double* w, int size);
+double* h_BulkOr2(double* v, double* w, int size);
 
 #endif

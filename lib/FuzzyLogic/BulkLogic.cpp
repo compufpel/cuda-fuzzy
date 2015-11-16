@@ -1,75 +1,83 @@
 #include "BulkLogic.hpp"
 
-BulkLogic::BulkLogic () {
-	this->fuzzy = new FuzzyLogic();
-}
+// __global__ void CudaNot(double* array, double* result, int size) {
 
-vector<double> BulkLogic::Not(vector<double> v) {
-	vector<double> result (v.size());
+// 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
 
-	for (int i = 0; i < v.size(); i++) {
-		result[i] = this->fuzzy->Not(v[i]);
-	}
+// 	if(idx < size) {
+// 		result[idx] = this->fuzzy->Not(array[idx]);
+// 	}
 
-	return result;
-}
+// }
 
-vector<double> BulkLogic::Not2(vector<double> v) {
-	vector<double> result (v.size());
 
-	for (int i = 0; i < v.size(); i++) {
-		result[i] = this->fuzzy->Not2(v[i]);
-	}
-
-	return result;
-}
-
-vector<double> BulkLogic::Not3(vector<double> v) {
-	vector<double> result (v.size());
-
-	for (int i = 0; i < v.size(); i++) {
-		result[i] = this->fuzzy->Not3(v[i]);
-	}
-
-	return result;
-}
-
-vector<double> BulkLogic::And(vector<double> v, vector<double> w) {
+double* h_BulkNot(double* v, int size) {
 	
-	vector<double> result (v.size());
+	double* result = (double*)malloc(sizeof(double) * size);
 
-	for (int i = 0; i < v.size(); i++) {
-		result[i] = this->fuzzy->And(v[i], w[i]);
+	for (int i = 0; i < size; i++) {
+		result[i] = Not(v[i]);
 	}
 
 	return result;
 }
 
-vector<double> BulkLogic::And2(vector<double> v, vector<double> w) {
-	vector<double> result (v.size());
+double* h_BulkNot2(double* v, int size) {
+	double* result = (double*)malloc(sizeof(double) * size);
 
-	for (int i = 0; i < v.size(); i++) {
-		result[i] = this->fuzzy->And2(v[i], w[i]);
+	for (int i = 0; i < size; i++) {
+		result[i] = Not2(v[i]);
+	}
+
+	return result;
+}
+
+double* h_BulkNot3(double* v, int size) {
+	double* result = (double*)malloc(sizeof(double) * size);
+
+	for (int i = 0; i < size; i++) {
+		result[i] = Not3(v[i]);
+	}
+
+	return result;
+}
+
+double* h_BulkAnd(double* v, double* w, int size) {
+	
+	double* result = (double*)malloc(sizeof(double) * size);
+
+	for (int i = 0; i < size; i++) {
+		result[i] = And(v[i], w[i]);
+	}
+
+	return result;
+}
+
+double* h_BulkAnd2(double* v, double* w, int size) {
+	double* result = (double*)malloc(sizeof(double) * size);
+
+	for (int i = 0; i < size; i++) {
+		result[i] = And2(v[i], w[i]);
 	}
 
 	return result;
 }
 			
-vector<double> BulkLogic::Or(vector<double> v, vector<double> w) {
-	vector<double> result (v.size());
+double* h_BulkOr(double* v, double* w, int size) {
+	double* result = (double*)malloc(sizeof(double) * size);
 
-	for (int i = 0; i < v.size(); i++) {
-		result[i] = this->fuzzy->Or(v[i], w[i]);
+	for (int i = 0; i < size; i++) {
+		result[i] = Or(v[i], w[i]);
 	}
 
 	return result;
 }
 
-vector<double> BulkLogic::Or2(vector<double> v, vector<double> w) {
-	vector<double> result (v.size());
+double* h_BulkOr2(double* v, double* w, int size) {
+	double* result = (double*)malloc(sizeof(double) * size);
 
-	for (int i = 0; i < v.size(); i++) {
-		result[i] = this->fuzzy->Or2(v[i], w[i]);
+	for (int i = 0; i < size; i++) {
+		result[i] = Or2(v[i], w[i]);
 	}
 
 	return result;

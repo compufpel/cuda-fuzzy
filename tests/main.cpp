@@ -239,38 +239,43 @@ SCENARIO( "We can make a bulk of fuzzy logics", "[fuzzy]" ) {
 
     GIVEN( "a vector of doubles" ) {
         
-        BulkLogic *bulk = new BulkLogic();
-        vector<double> v (1000, 0.5);
+        double* array = (double*)malloc(sizeof(double) * 5);
+        array[0] = 0.5;
+        array[1] = 0.5;
+        array[2] = 0.5;
+        array[3] = 0.5;
+        array[4] = 0.5;
         
         
         WHEN( "we use the not(!) operator on vector" ) {
             
-            vector<double> result = bulk->Not(v);
+            double* result = h_BulkNot(array, 5);
             
             THEN( "the result should be 0.6" ) {
                 REQUIRE( result[0] == 0.5 );
+                REQUIRE( result[1] == 0.5 );
             }
         }
         
     }
 
-    GIVEN( "2 vector of doubles" ) {
+    // GIVEN( "2 vector of doubles" ) {
         
-        BulkLogic *bulk = new BulkLogic();
-        vector<double> v (1000, 0.3);
-        vector<double> v2 (1000, 0.5);
+    //     BulkLogic *bulk = new BulkLogic();
+    //     vector<double> v (1000, 0.3);
+    //     vector<double> v2 (1000, 0.5);
         
         
-        WHEN( "we use the and operator on both" ) {
+    //     WHEN( "we use the and operator on both" ) {
             
-            vector<double> result = bulk->And(v, v2);
+    //         vector<double> result = bulk->And(v, v2);
             
-            THEN( "the result should be 0.6" ) {
-                REQUIRE( result[0] == 0.3 );
-                REQUIRE( result[1] == 0.3 );
-            }
-        }
+    //         THEN( "the result should be 0.6" ) {
+    //             REQUIRE( result[0] == 0.3 );
+    //             REQUIRE( result[1] == 0.3 );
+    //         }
+    //     }
         
-    }
+    // }
 }
 
