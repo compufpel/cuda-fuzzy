@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="docs">
+      </df>
+      <df name="lib">
+        <in>FuzzyNumber.cpp</in>
+        <in>FuzzyNumber.hpp</in>
+      </df>
+      <df name="tests">
+        <df name="Catch">
+          <df name="docs">
+          </df>
+          <df name="include">
+            <df name="external">
+              <in>clara.h</in>
+              <in>tbc_text_format.h</in>
+            </df>
+            <df name="internal">
+              <in>catch_approx.hpp</in>
+              <in>catch_assertionresult.h</in>
+              <in>catch_assertionresult.hpp</in>
+              <in>catch_capture.hpp</in>
+              <in>catch_clara.h</in>
+              <in>catch_commandline.hpp</in>
+              <in>catch_common.h</in>
+              <in>catch_common.hpp</in>
+              <in>catch_compiler_capabilities.h</in>
+              <in>catch_config.hpp</in>
+              <in>catch_console_colour.hpp</in>
+              <in>catch_console_colour_impl.hpp</in>
+              <in>catch_context.h</in>
+              <in>catch_context_impl.hpp</in>
+              <in>catch_debugger.h</in>
+              <in>catch_debugger.hpp</in>
+              <in>catch_default_main.hpp</in>
+              <in>catch_evaluate.hpp</in>
+              <in>catch_exception_translator_registry.hpp</in>
+              <in>catch_expression_lhs.hpp</in>
+              <in>catch_fatal_condition.hpp</in>
+              <in>catch_generators.hpp</in>
+              <in>catch_generators_impl.hpp</in>
+              <in>catch_impl.hpp</in>
+              <in>catch_interfaces_capture.h</in>
+              <in>catch_interfaces_config.h</in>
+              <in>catch_interfaces_exception.h</in>
+              <in>catch_interfaces_generators.h</in>
+              <in>catch_interfaces_registry_hub.h</in>
+              <in>catch_interfaces_reporter.h</in>
+              <in>catch_interfaces_runner.h</in>
+              <in>catch_interfaces_tag_alias_registry.h</in>
+              <in>catch_interfaces_testcase.h</in>
+              <in>catch_legacy_reporter_adapter.h</in>
+              <in>catch_legacy_reporter_adapter.hpp</in>
+              <in>catch_list.hpp</in>
+              <in>catch_matchers.hpp</in>
+              <in>catch_message.h</in>
+              <in>catch_message.hpp</in>
+              <in>catch_notimplemented_exception.h</in>
+              <in>catch_notimplemented_exception.hpp</in>
+              <in>catch_objc.hpp</in>
+              <in>catch_objc_arc.hpp</in>
+              <in>catch_option.hpp</in>
+              <in>catch_platform.h</in>
+              <in>catch_ptr.hpp</in>
+              <in>catch_reenable_warnings.h</in>
+              <in>catch_registry_hub.hpp</in>
+              <in>catch_reporter_registrars.hpp</in>
+              <in>catch_reporter_registry.hpp</in>
+              <in>catch_result_builder.h</in>
+              <in>catch_result_builder.hpp</in>
+              <in>catch_result_type.h</in>
+              <in>catch_runner_impl.hpp</in>
+              <in>catch_section.h</in>
+              <in>catch_section.hpp</in>
+              <in>catch_section_info.h</in>
+              <in>catch_section_info.hpp</in>
+              <in>catch_stream.h</in>
+              <in>catch_stream.hpp</in>
+              <in>catch_streambuf.h</in>
+              <in>catch_suppress_warnings.h</in>
+              <in>catch_tag_alias.h</in>
+              <in>catch_tag_alias_registry.h</in>
+              <in>catch_tag_alias_registry.hpp</in>
+              <in>catch_test_case_info.h</in>
+              <in>catch_test_case_info.hpp</in>
+              <in>catch_test_case_registry_impl.hpp</in>
+              <in>catch_test_case_tracker.hpp</in>
+              <in>catch_test_registry.hpp</in>
+              <in>catch_test_spec.hpp</in>
+              <in>catch_test_spec_parser.hpp</in>
+              <in>catch_text.h</in>
+              <in>catch_timer.h</in>
+              <in>catch_timer.hpp</in>
+              <in>catch_tostring.h</in>
+              <in>catch_tostring.hpp</in>
+              <in>catch_totals.hpp</in>
+              <in>catch_version.h</in>
+              <in>catch_version.hpp</in>
+              <in>catch_xmlwriter.hpp</in>
+            </df>
+            <df name="reporters">
+              <in>catch_reporter_bases.hpp</in>
+              <in>catch_reporter_compact.hpp</in>
+              <in>catch_reporter_console.hpp</in>
+              <in>catch_reporter_junit.hpp</in>
+              <in>catch_reporter_teamcity.hpp</in>
+              <in>catch_reporter_xml.hpp</in>
+            </df>
+            <in>catch.hpp</in>
+            <in>catch_runner.hpp</in>
+            <in>catch_with_main.hpp</in>
+          </df>
+          <df name="projects">
+            <df name="CMake">
+            </df>
+            <df name="runners">
+              <df name="iTchRunner">
+                <df name="internal">
+                  <in>iTchRunnerAppDelegate.h</in>
+                  <in>iTchRunnerMainView.h</in>
+                  <in>iTchRunnerReporter.h</in>
+                </df>
+                <in>itChRunnerMain.mm</in>
+              </df>
+            </df>
+            <df name="SelfTest">
+              <df name="Baselines">
+              </df>
+              <df name="SurrogateCpps">
+                <in>catch_common.cpp</in>
+                <in>catch_console_colour.cpp</in>
+                <in>catch_debugger.cpp</in>
+                <in>catch_interfaces_capture.cpp</in>
+                <in>catch_interfaces_config.cpp</in>
+                <in>catch_interfaces_exception.cpp</in>
+                <in>catch_interfaces_generators.cpp</in>
+                <in>catch_interfaces_registry_hub.cpp</in>
+                <in>catch_interfaces_reporter.cpp</in>
+                <in>catch_interfaces_runner.cpp</in>
+                <in>catch_interfaces_testcase.cpp</in>
+                <in>catch_message.cpp</in>
+                <in>catch_option.cpp</in>
+                <in>catch_ptr.cpp</in>
+                <in>catch_stream.cpp</in>
+                <in>catch_streambuf.cpp</in>
+                <in>catch_test_spec.cpp</in>
+                <in>catch_xmlwriter.cpp</in>
+              </df>
+              <in>ApproxTests.cpp</in>
+              <in>BDDTests.cpp</in>
+              <in>ClassTests.cpp</in>
+              <in>CmdLineTests.cpp</in>
+              <in>ConditionTests.cpp</in>
+              <in>EnumToString.cpp</in>
+              <in>ExceptionTests.cpp</in>
+              <in>GeneratorTests.cpp</in>
+              <in>MessageTests.cpp</in>
+              <in>MiscTests.cpp</in>
+              <in>SectionTrackerTests.cpp</in>
+              <in>TagAliasTests.cpp</in>
+              <in>TestMain.cpp</in>
+              <in>ToStringPair.cpp</in>
+              <in>ToStringTuple.cpp</in>
+              <in>ToStringVector.cpp</in>
+              <in>ToStringWhich.cpp</in>
+              <in>TrickyTests.cpp</in>
+              <in>VariadicMacrosTests.cpp</in>
+            </df>
+            <df name="VS2008">
+              <df name="TestCatch">
+                <df name="TestCatch">
+                  <in>TestCatch.cpp</in>
+                </df>
+              </df>
+            </df>
+            <df name="VS2010">
+              <df name="TestCatch">
+                <df name="TestCatch">
+                </df>
+              </df>
+            </df>
+            <df name="XCode">
+              <df name="CatchSelfTest">
+                <df name="CatchSelfTest">
+                  <in>catch_text.cpp</in>
+                </df>
+                <df name="CatchSelfTest.xcodeproj">
+                  <df name="project.xcworkspace">
+                  </df>
+                </df>
+                <df name="CatchSelfTestSingle">
+                </df>
+                <df name="CatchSelfTestSingle.xcodeproj">
+                  <df name="project.xcworkspace">
+                  </df>
+                </df>
+              </df>
+              <df name="iOSTest">
+                <df name="iOSTest">
+                  <df name="en.lproj">
+                  </df>
+                  <in>OCTest.mm</in>
+                  <in>TestObj.h</in>
+                  <in>TestObj.m</in>
+                </df>
+                <df name="iOSTest.xcodeproj">
+                  <df name="project.xcworkspace">
+                  </df>
+                </df>
+              </df>
+              <df name="OCTest">
+                <df name="OCTest">
+                  <in>CatchOCTestCase.h</in>
+                  <in>CatchOCTestCase.mm</in>
+                  <in>Main.mm</in>
+                  <in>OCTest.mm</in>
+                  <in>TestObj.h</in>
+                  <in>TestObj.m</in>
+                </df>
+                <df name="OCTest.xcodeproj">
+                  <df name="project.xcworkspace">
+                  </df>
+                </df>
+              </df>
+            </df>
+          </df>
+          <df name="scripts">
+          </df>
+          <df name="single_include">
+            <in>catch.hpp</in>
+          </df>
+        </df>
+        <in>main.cpp</in>
+      </df>
+    </df>
+  </logicalFolder>
+  <projectmakefile>makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>
