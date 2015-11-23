@@ -1,5 +1,13 @@
 #include "BulkLogic.cuh"
 
+/*___h_BulkNot___
+*   Objective: Implement the sequential version of not operation (1-Input) with Fuzzy array.
+*   Parameters:
+*              -- double* v: Array Fuzzy that will be operated 
+*              -- int size : Number of array elements
+*   Creation date: November, 2015.
+*   Exception case: -
+*/
 double* h_BulkNot(double* v, int size) {
 	
 	double* result = (double*)malloc(sizeof(double) * size);
