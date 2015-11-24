@@ -4,9 +4,13 @@
 
 \usepackage{graphicx,url}
 
+
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage{amsmath}
+
 
 \sloppy
 
@@ -70,6 +74,16 @@ de dez minutos para três segundos. Outro exemplo relevante é o ganho de desemp
 \label{sec:logfuzzy}
 
 % Descrição breve, pra que serve, exemplos
+Lógica fuzzy foi criada com base na teoria de conjuntos Fuzzy, a ideia principal de fuzzy é a seguinte: Um valor é verdadeiro (grau 1) ou falsos (grau 0), sendo que o grau pode variar de 0 à 1. A teoria do conjunto fuzzy foi inventada com o objetivo de oferecer ferramentas matemáticas para solucionar problemas imprecisos ou vagos. Dentre as inúmeras aplicações com lógica fuzzy, o projeto IMMO-RATE, é bastante interessante, pois ele permite análise de sustentabilidade em imóveis, considerando questões chaves específicas que utilizam a lógica fuzzy.
+
+\subsection{Operadores Fuzzy}
+Conjuntos são definidos por uma condição específica que define se um conjunto pertence ou não a um conjunto. Para exemplificar os operados em fuzzy logo abaixo foram utilizados conjuntos A e B.
+Os operadores mais comuns em conjuntos fuzzy são: união 
+(A\begin{math} \cup \end{math} B ={ x | x \begin{math}\in \end{math} A \begin{math}\vee \end{math} x \begin{math}\in \end{math} B) e intersecão (A \begin{math} \cap \end{math} B = 
+x | x \begin{math}\in \end{math}A \begin{math}\wedge \end{math} x \begin{math}\in \end{math} B).  
+%={x | x ∈ A ∧ x ∈ B}). 
+
+
 % Explicação dos operadores mais comuns (talvez fazer uma correlação com a lógica proposicional / lógica comum)
 
 \section{\libname}
