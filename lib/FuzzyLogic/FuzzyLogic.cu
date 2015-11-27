@@ -90,3 +90,5 @@ double Or(double x, double y) {
 double Or2(double x, double y) {
 	return ( x + y ) - ( x * y );
 }
+
+
