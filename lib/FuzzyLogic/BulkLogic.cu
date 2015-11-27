@@ -135,3 +135,4 @@ double* h_BulkOr2(double* v, double* w, int size) {
 
 	return result;
 }
+
