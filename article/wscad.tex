@@ -4,12 +4,20 @@
 
 \usepackage{graphicx,url}
 
-
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{mathtools}
 \usepackage{amsmath}
+\usepackage{listings}
+
+\usepackage{todonotes}
+\usepackage{xargs}
+\newcommandx{\change}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+
+\lstset{ %
+frame=single
+}
 
 
 \sloppy
@@ -88,6 +96,46 @@ x | x \begin{math}\in \end{math}A \begin{math}\wedge \end{math} x \begin{math}\i
 
 \section{\libname}
 \label{sec:lib}
+
+	\libname~é o nome dado a biblioteca de lógica \textit{fuzzy} desenvolvida neste trabalho, voltada à GPU. Para o desenvolvimento, a biblioteca criada necessitou ser composta de vários operadores para trabalhar sobre os conjuntos \textit{fuzzy}. Foram escolhidas operações básicas~\cite{klir:95} para implementação, sendo estas 2 operadores AND ($\wedge$), 2 operadores OR ($\vee$) e 3 operadores NOT ($\sim$). A Figura~\ref{fig:fuzzyops} mostram os operadores implementados.
+	
+\begin{figure}[!h]
+\centering
+
+\[ \begin{array}{ccc}
+	AND1(x, y) & = & min(x, y) \\
+	AND2(x, y) & = & x * y \\
+	OR1(x, y) & = & max(x, y) \\
+	OR2(x, y) & = & (x + y) - (x * y)\\
+	NOT1(x) & = & 1 - x \\
+	NOT2(x) & = & \sqrt{1-x^2} \\
+	NOT3(x) & = & \sqrt[3]{1-x^3} \\
+\end{array} \]
+\caption{Operações implementadas na biblioteca~\libname}
+\label{fig:fuzzyops}
+\end{figure}
+
+\todo[inline]{Referenciar cada operador mostrado? Explicar mais a operação? Parece óbvio..}
+
+Os operadores foram implementados em C, utilizando-se da biblioteca CUDA, e foram desenvolvidos como funções que recebem como argumentos um ou dois valores do tipo \texttt{double} (um para operações \texttt{NOT}, e dois para operações \texttt{AND} e \texttt{OR}), sendo estes os operandos e retornam um valor do tipo \texttt{double}, o qual é o resultado da operação. A Figura~\ref{fig:operation} exemplifica a implementação da operação \texttt{NOT3}.
+
+\begin{figure}[!h]
+\centering
+\lstinputlisting[language=C, firstline=43, lastline=45, otherkeywords={inline,device}]{../lib/FuzzyLogic/d_FuzzyLogic.cu}
+\caption{Código de implementação da operação de lógica \textit{fuzzy} NOT3}
+\label{fig:operation}
+\end{figure}
+
+Porém, é importante observar que somente a implementação destes operadores por si só representa pouco do trabalho efetuado. Como a arquitetura alvo para esta biblioteca são as GPUs, precisou-se elaborar uma maneira de aproveitar o paralelismo disponível nestas arquiteturas. A estratégia abordada por este trabalho buscou agrupar conjuntos de operações de um mesmo tipo em um \textit{array} de instruções. Com isto, é possível executar múltiplas operações de lógica \textit{fuzzy} nos vários núcleos disponibilizados pela GPU. As operações são agrupadas em um mesmo tipo para serem executadas em paralelo devido à taxonomia destas arquiteturas, sendo elas consideradas SIMT (\textit{Single instruction multiple thread})~\cite{keckler:11}, o que indica que \change{Explicar SIMT}...
+
+Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{Bulk}. Um \texttt{Bulk} fará uma operação de lógica \textit{fuzzy} sobre um \textit{array} de operandos (Em caso de operações \texttt{BulkNOT}) ou sobre dois \textit{arrays} de operandos (Em caso de operações \texttt{BulkAND} e \texttt{BulkOR}). No caso de operações que trabalham com dois \textit{arrays}, as operações serão efetuadas de maneira correspondente nos \textit{arrays}, i.e., o primeiro operando de um \textit{array} será combinado com o primeiro operando do outro \textit{array}, gerando assim uma computação parcial da operação, sendo este o primeiro elemento do \textit{array} de resultado. Logo, quando a operação requer dois \textit{arrays} como entrada, os mesmos deverão conter o mesmo número de elementos. A Figura~\ref{fig:bulkoperation} exibe uma computação parcial da operação \texttt{BulkAND1}.
+
+\begin{figure}[!h]
+\centering
+\lstinputlisting[language=C, basicstyle=\scriptsize, firstline=171, lastline=178, otherkeywords={inline,device}]{../lib/FuzzyLogic/d_BulkLogic.cu}
+\caption{Código de implementação de uma única operação \texttt{BulkAND1}}
+\label{fig:bulkoperation}
+\end{figure}
 
 \section{Metodologia}
 \label{sec:metodologia}	
