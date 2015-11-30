@@ -7,7 +7,7 @@
 
 #include "BulkLogic.cuh"
 
-/*___h_BulkNot___
+/*___h_BulkNot___ 
 *   Function: Implement the sequential version of not operation (1-Input) with Fuzzy array.
 *   Parameters:
 *   Input: double* v: Array Fuzzy that will be operated 

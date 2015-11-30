@@ -8,7 +8,7 @@
 #include "FuzzyLogic.cuh"
 
 /*___Not___
-*   Function: Implement the sequential version of not operation (1-Input) with Fuzzy array.
+*   Function: Implement the sequential version of Fuzzy not operation (1-Input).
 *   Parameters:
 *   Input:  double* x: Input of Basic Fuzzy operation
 *   Output: double   : Response of Fuzzy operation 
@@ -20,7 +20,7 @@ double Not(double x) {
 }
 
 /*___Not2___
-*   Function: Implement the sequential version of not operation sqrt(1 - pow(x, 2)) with Fuzzy array.
+*   Function: Implement the sequential version of Fuzzy not operation sqrt(1 - pow(x, 2)).
 *   Parameters:
 *   Input:  double* x: Input of Basic Fuzzy operation
 *   Output: double   : Response of Fuzzy operation 
@@ -32,7 +32,7 @@ double Not2(double x) {
 }
 
 /*___Not3___
-*   Function: Implement the sequential version of not operation pow(1 - pow(x, 3), 1.0 / 3) with Fuzzy array.
+*   Function: Implement the sequential version of Fuzzy not operation pow(1 - pow(x, 3), 1.0 / 3).
 *   Parameters:
 *   Input:  double* x: Input of Basic Fuzzy operation
 *   Output: double   : Response of Fuzzy operation 
@@ -44,9 +44,10 @@ double Not3(double x) {
 }
 
 /*___And___
-*   Function: Implement the sequential version of and operation (<) with Fuzzy array.
+*   Function: Implement the sequential version of Fuzzy and operation (<).
 *   Parameters:
 *   Input:  double* x: Input of Basic Fuzzy operation
+*   Input:  double* y: Input of Basic Fuzzy operation
 *   Output: double   : Response of Fuzzy operation 
 *   Creation date: November, 2015.
 *   Exception case: -
@@ -56,9 +57,10 @@ double And(double x, double y) {
 }
 
 /*___And2___
-*   Function: Implement the sequential version of and operation (*) with Fuzzy array.
+*   Function: Implement the sequential version of Fuzzy and operation (*).
 *   Parameters:
 *   Input:  double* x: Input of Basic Fuzzy operation
+*   Input:  double* y: Input of Basic Fuzzy operation
 *   Output: double   : Response of Fuzzy operation 
 *   Creation date: November, 2015.
 *   Exception case: -
@@ -68,9 +70,10 @@ double And2(double x, double y) {
 }
 
 /*___Or___
-*   Function: Implement the sequential version of not operation (>) with Fuzzy array.
+*   Function: Implement the sequential version of Fuzzy not operation (>).
 *   Parameters:
 *   Input:  double* x: Input of Basic Fuzzy operation
+*   Input:  double* y: Input of Basic Fuzzy operation
 *   Output: double   : Response of Fuzzy operation 
 *   Creation date: November, 2015.
 *   Exception case: -
@@ -79,10 +82,11 @@ double Or(double x, double y) {
 	return x > y ? x : y;
 }
 
-/*___h_BulkOr2___
-*   Function: Implement the sequential version of not operation (( x + y ) - ( x * y )) with Fuzzy array.
+/*___Or2___
+*   Function: Implement the sequential version of Fuzzy not operation (( x + y ) - ( x * y )).
 *   Parameters:
 *   Input:  double* x: Input of Basic Fuzzy operation
+*   Input:  double* y: Input of Basic Fuzzy operation
 *   Output: double   : Response of Fuzzy operation 
 *   Creation date: November, 2015.
 *   Exception case: -
