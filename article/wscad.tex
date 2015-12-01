@@ -60,19 +60,19 @@ Resumo aqui.
 
 % Logica fuzzy: colocar onde? %
 
-	Existem diversos casos onde classes de objetos não pertencem totalmente a um conjunto. Baseado nisto, Zadeh definiu a teoria dos conjuntos \textit{fuzzy}~\cite{zadeh:65}, o que visa tratar problemas de imprecisão ao classificar dados no mundo real. Os conjuntos \textit{fuzzy} possuem aplicações em sistemas de controle e de suporte à decisão, onde a descrição do problema não é feita de forma precisa~\cite{weber:03}.
+	Existem diversos casos onde classes de objetos não pertencem totalmente a um conjunto. Baseado nisso, Zadeh definiu a teoria dos conjuntos \textit{fuzzy}~\cite{zadeh:65}, que visa tratar problemas de imprecisão ao classificar dados no mundo real. Os conjuntos \textit{fuzzy} possuem aplicações em sistemas de controle e de suporte à decisão, onde a descrição do problema não é feita de forma precisa~\cite{weber:03}.
 	
-	Utilizando-se dos conjuntos \textit{fuzzy}, tem-se a base para a lógica \textit{fuzzy}, sendo construído a partir da lógica proposicional. Com isto, os operadores foram definidos à partir dos já estabelecidos na lógica clássica, com a adição de outros para fins práticos~\cite{tanscheit:04}. Uma característica interessante que diferencia a lógica tradicional da \textit{fuzzy} é que na primeira os valores que são utilizados atendem a condição de serem verdadeiros ou falsos (0 ou 1). Já na segunda, trabalha-se com conjuntos \textit{fuzzy} -- estes podem assumir um valor que pertence ao intervalo $[0, 1]$, o que permite que um conjunto \textit{fuzzy} possa ser representado por uma infinidade de valores~\cite{klir:95}.	
+	Utilizando-se dos conhecimentos provenientes dos conjuntos \textit{fuzzy}, tem-se a base para a utiliza��o da lógica \textit{fuzzy}, sendo construída a partir da lógica proposicional. Com isso, os operadores foram definidos a� partir dos já estabelecidos na lógica clássica, com a adição de outros, para fins práticos~\cite{tanscheit:04}. Uma característica interessante que diferencia a lógica tradicional da \textit{fuzzy} é que na primeira os valores que são utilizados atendem � condição de serem verdadeiros ou falsos (0 ou 1). Já na segunda, trabalha-se com conjuntos \textit{fuzzy}, os quais podem assumir um valor que pertence ao intervalo $[0, 1]$. Isso permite que um conjunto \textit{fuzzy} possa ser representado por uma infinidade de valores~\cite{klir:95}.	
 	
 % GPU %
 
-	A fim de obter-se computação com bom desempenho, é importante fazer uso dos vários núcleos de processamento os quais são disponibilizados nos sistemas de computação atuais -- para poder por em prática o uso do paralelismo. Neste contexto, encaixam-se as GPUs (\textit{Graphical Processor Units}), as quais são componentes com alto poder de paralelismo~\cite{sengupta:07}. Porém, é importante ressaltar que as GPUs são reservadas a obter bom desempenho com aplicações que possuem determinadas características~\cite{owens:08} que incluem: (i) Requisitos computacionais grandes, (ii) Paralelismo nas aplicações e (iii) maior importância ao \textit{throughput} do que a latência. Destacam-se alguns exemplos práticos bem-sucedidos que utilizam CUDA:
+	Com a finalidade de obter computação com bom desempenho, é importante o uso dos vários núcleos de processamento disponibilizados nos sistemas de computação atuais -- para um melhor aproveitamento do paralelismo do sistema computacional. Neste contexto, encaixam-se as GPUs (\textit{Graphical Processor Units}), que são componentes com alto poder de paralelismo~\cite{sengupta:07}. Porém, é importante ressaltar que as GPUs são reservadas a obter bom desempenho com aplicações que possuem determinadas características~\cite{owens:08}, que incluem: (i) Requisitos computacionais excessivos, (ii) Paralelismo nas aplicações e (iii) maior importância do \textit{throughput} em detrimento da latência. Destacam-se ainda alguns exemplos práticos bem-sucedidos que utilizam CUDA:
 Análise do fluxo de tráfego aéreo, através do uso do poder computacional de CUDA, foi possível reduzir o tempo de análise do tráfego aéreo nacional
-de dez minutos para três segundos. Outro exemplo relevante é o ganho de desempenho em simulações moleculares NAMD(dinâmica molecular em nanoescala), o ganho de desempenho foi possível graças as arquiteturas paralelas das GPUs~\cite{nvidia:15}.
+de dez minutos para três segundos. Outro exemplo relevante é o ganho de desempenho em simulações moleculares NAMD(dinâmica molecular em nanoescala), o ganho de desempenho foi possível graças �s arquiteturas paralelas das GPUs~\cite{nvidia:15}.
 
 % O trabalho - Acredito que deverá ser melhor explorado esta parte! Quando os objetivos ficarem mais claros %	
 
-	Tendo estes conceitos discutidos, o objetivo deste trabalho é descrever uma biblioteca de lógica \textit{fuzzy} voltada para GPUs, a fim de verificar como pode ser efetuado uma implementação que consiga extrair paralelismo deste tipo de arquiteturas.
+	Tendo sido discutidos estes conceitos, o objetivo deste trabalho é descrever uma biblioteca de lógica \textit{fuzzy} voltada para GPUs, a fim de verificar a forma como pode ser efetuada uma implementação que consiga extrair paralelismo deste tipo de arquiteturas.
 	
 % Discussão sobre a estrutura do artigo.
 
@@ -81,13 +81,13 @@ de dez minutos para três segundos. Outro exemplo relevante é o ganho de desemp
 \section{Lógica Fuzzy}
 \label{sec:logfuzzy}
 
-A lógica \textit{fuzzy} foi criada com base na teoria de conjuntos \textit{fuzzy}. A principal ideia da lógica \textit{fuzzy} é aumentar a representação de valores, não restrigindo-se somente aos valores 0 (falso) e 1 (verdadeiro). Um valor na lógica \textit{fuzzy} é representado por um número real que está entre os números 0 e 1 -- e esse número representa o grau de pertinência do valor dentro de um conjunto \textit{fuzzy}~\cite{boclin:06}. A teoria dos conjuntos \textit{fuzzy} foi criada com o propósito de oferecer ferramentas matemáticas que visam solucionar problemas que possuam algumas das seguintes características~\cite{falcao:02}: Incerteza, informações vagas e ambiguidade.
+A lógica \textit{fuzzy} foi criada com base na teoria de conjuntos \textit{fuzzy}. A principal ideia da lógica \textit{fuzzy} é aumentar a representação de valores, não restrigindo-se somente aos valores 0 (falso) e 1 (verdadeiro). Um valor na lógica \textit{fuzzy} é representado por um número real que está entre os números 0 e 1 -- e este número representa o grau de pertinência do valor dentro de um conjunto \textit{fuzzy}~\cite{boclin:06}. A teoria dos conjuntos \textit{fuzzy} foi criada com o propósito de oferecer ferramentas matemáticas que visam solucionar problemas que possuam algumas das seguintes características~\cite{falcao:02}: Incerteza, informações vagas e ambiguidade.
 
 %Lógica fuzzy foi criada com base na teoria de conjuntos Fuzzy, a ideia principal de fuzzy é a seguinte: Um valor é verdadeiro (grau 1) ou falsos (grau 0), sendo que o grau pode variar de 0 à 1. A teoria do conjunto fuzzy foi inventada com o objetivo de oferecer ferramentas matemáticas para solucionar problemas imprecisos ou vagos. Dentre as inúmeras aplicações com lógica fuzzy, o projeto IMMO-RATE, é bastante interessante, pois ele permite análise de sustentabilidade em imóveis, considerando questões chaves específicas que utilizam a lógica fuzzy.
 
 \subsection{Operadores Fuzzy}
-Conjuntos são definidos por uma condição específica que define se um conjunto pertence ou não a um conjunto. Para exemplificar os operados em fuzzy logo abaixo foram utilizados conjuntos A e B.
-Os operadores mais comuns em conjuntos \textit{fuzzy} são: união 
+Conjuntos são definidos por uma condição específica que define se um conjunto pertence ou não a outro. Para exemplificar os operadores em fuzzy, logo abaixo foram utilizados conjuntos A e B.
+Os mais comuns em conjuntos \textit{fuzzy} são: união 
 (A\begin{math} \cup \end{math} B ={ x | x \begin{math}\in \end{math} A \begin{math}\vee \end{math} x \begin{math}\in \end{math} B) e intersecão (A \begin{math} \cap \end{math} B = 
 x | x \begin{math}\in \end{math}A \begin{math}\wedge \end{math} x \begin{math}\in \end{math} B).  
 
@@ -98,7 +98,7 @@ x | x \begin{math}\in \end{math}A \begin{math}\wedge \end{math} x \begin{math}\i
 \section{\libname}
 \label{sec:lib}
 
-	\libname~é o nome dado a biblioteca de lógica \textit{fuzzy} desenvolvida neste trabalho, voltada à GPU. Para o desenvolvimento, a biblioteca criada necessitou ser composta de vários operadores para trabalhar sobre os conjuntos \textit{fuzzy}. Foram escolhidas operações básicas~\cite{klir:95} para implementação, sendo estas 2 operadores AND ($\wedge$), 2 operadores OR ($\vee$) e 3 operadores NOT ($\sim$). A Figura~\ref{fig:fuzzyops} mostram os operadores implementados.
+	\libname~é o nome dado � biblioteca de lógica \textit{fuzzy} desenvolvida neste trabalho, voltada a GPUs. Para o seu desenvolvimento, a biblioteca criada teve a necessidade de incluir vários operadores, para trabalhar sobre os conjuntos \textit{fuzzy}. Foram escolhidas operações básicas~\cite{klir:95} para a implementação, sendo estas: 2 operações AND ($\wedge$), 2 operações OR ($\vee$) e 3 operações NOT ($\sim$). Na Figura~\ref{fig:fuzzyops} est�o demonstradas as operações atrav�s dos operadores desenvolvidos.
 	
 \begin{figure}[!h]
 \centering
@@ -118,7 +118,7 @@ x | x \begin{math}\in \end{math}A \begin{math}\wedge \end{math} x \begin{math}\i
 
 \todo[inline]{Referenciar cada operador mostrado? Explicar mais a operação? Parece óbvio..}
 
-Os operadores foram implementados em C, utilizando-se da biblioteca CUDA, e foram desenvolvidos como funções que recebem como argumentos um ou dois valores do tipo \texttt{double} (um para operações \texttt{NOT}, e dois para operações \texttt{AND} e \texttt{OR}), sendo estes os operandos e retornam um valor do tipo \texttt{double}, o qual é o resultado da operação. A Figura~\ref{fig:operation} exemplifica a implementação da operação \texttt{NOT3}.
+Os operadores foram implementados em C, utilizando-se a biblioteca CUDA, e foram desenvolvidos como funções que recebem como argumentos um ou dois valores do tipo \texttt{double} (um para operações \texttt{NOT}, e dois para operações \texttt{AND} e \texttt{OR}), sendo esses os operandos e retornando um valor do tipo \texttt{double}, o qual é o resultado da operação. Na Figura~\ref{fig:operation} est� exemplificada a implementação da operação \texttt{NOT3}.
 
 \begin{figure}[!h]
 \centering
@@ -127,9 +127,9 @@ Os operadores foram implementados em C, utilizando-se da biblioteca CUDA, e fora
 \label{fig:operation}
 \end{figure}
 
-Porém, é importante observar que somente a implementação destes operadores por si só representa pouco do trabalho efetuado. Como a arquitetura alvo para esta biblioteca são as GPUs, precisou-se elaborar uma maneira de aproveitar o paralelismo disponível nestas arquiteturas. A estratégia abordada por este trabalho buscou agrupar conjuntos de operações de um mesmo tipo em um \textit{array} de instruções. Com isto, é possível executar múltiplas operações de lógica \textit{fuzzy} nos vários núcleos disponibilizados pela GPU. As operações são agrupadas em um mesmo tipo para serem executadas em paralelo devido à taxonomia destas arquiteturas, sendo elas consideradas SIMT (\textit{Single instruction multiple thread})~\cite{keckler:11}, o que indica que \change{Explicar SIMT}...
+Porém, é importante observar que a implementação destes operadores, por si só, representa pouco do trabalho efetuado. Como as arquiteturas alvo para esta biblioteca são as GPUs, houve a necessidade de elaborar uma maneira de aproveitar o paralelismo disponível nestas arquiteturas. A estratégia abordada por este trabalho buscou agrupar conjuntos de operações de um mesmo tipo, em um \textit{array} de instruções. Com isso, surge a possibilidade de serem executadasmúltiplas operações de lógica \textit{fuzzy} nos vários núcleos disponibilizados pela GPU. As operações são agrupadas em um mesmo tipo para serem executadas em paralelo devido à taxonomia destas arquiteturas, sendo elas consideradas SIMT (\textit{Single instruction multiple thread})~\cite{keckler:11}, o que indica que \change{Explicar SIMT}...
 
-Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{Bulk}. Um \texttt{Bulk} fará uma operação de lógica \textit{fuzzy} sobre um \textit{array} de operandos (Em caso de operações \texttt{BulkNOT}) ou sobre dois \textit{arrays} de operandos (Em caso de operações \texttt{BulkAND} e \texttt{BulkOR}). No caso de operações que trabalham com dois \textit{arrays}, as operações serão efetuadas de maneira correspondente nos \textit{arrays}, i.e., o primeiro operando de um \textit{array} será combinado com o primeiro operando do outro \textit{array}, gerando assim uma computação parcial da operação, sendo este o primeiro elemento do \textit{array} de resultado. Logo, quando a operação requer dois \textit{arrays} como entrada, os mesmos deverão conter o mesmo número de elementos. A Figura~\ref{fig:bulkoperation} exibe uma computação parcial da operação \texttt{BulkAND1}.
+Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{Bulk}, o qual fará uma operação de lógica \textit{fuzzy} sobre um \textit{array} de operandos (Em caso de operações \texttt{BulkNOT}) ou sobre dois \textit{arrays} de operandos (Em caso de operações \texttt{BulkAND} e \texttt{BulkOR}). No caso de operações que trabalham com dois \textit{arrays}, as operações serão efetuadas de maneira correspondente nos \textit{arrays}, i.e., o primeiro operando de um \textit{array} será combinado com o primeiro operando do outro \textit{array}, gerando assim uma computação parcial da operação, sendo esse o primeiro elemento do \textit{array} de resultado. Logo, quando a operação requer dois \textit{arrays} como entrada, os mesmos deverão conter o mesmo número de elementos. Na Figura~\ref{fig:bulkoperation} est� representada uma computação parcial da operação \texttt{BulkAND1}.
 
 \begin{figure}[!h]
 \centering
@@ -138,7 +138,7 @@ Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{
 \label{fig:bulkoperation}
 \end{figure}
 
-O código acima é a representação de uma operação efetuada entre o i-ésimo elemento de um \textit{array} com seu correspondente no segundo \textit{array}. O resultado desta operação, gera o i-ésimo elemento do \textit{array} que armazenará os resultados da operação \texttt{Bulk}.
+O código acima é a representação de uma operação efetuada entre o i-ésimo elemento de um \textit{array} com seu correspondente no segundo \textit{array}. O resultado desta operação gera o i-ésimo elemento do \textit{array}, o qual armazenará os resultados da operação \texttt{Bulk}.
 
 \section{Metodologia}
 \label{sec:metodologia}	
@@ -152,9 +152,9 @@ O código acima é a representação de uma operação efetuada entre o i-ésimo
 \section{Trabalhos Relacionados}
 \label{sec:trabalhos}
 
-	Existem diversas implementações relacionadas à lógica \textit{fuzzy}. Os artigos visualizados na bibliografia normalmente fazem utilização de lógica \textit{fuzzy} voltada para um tipo de problema, não descrevendo uma biblioteca genérica. Como trabalhos descritos desta forma, existe~\cite{sugeno:93}, utiliza-se lógica \textit{fuzzy} para a discussão de um metódo para modelagem qualitativa. Em~\cite{li:11}, é empregada a lógica \textit{fuzzy} para fazer o gerenciamento de energia e bateria de automóveis híbridos do tipo \textit{plug-in}.
+	Existem diversas implementações relacionadas a lógica \textit{fuzzy}. Os artigos visualizados na bibliografia normalmente fazem utilização de lógica \textit{fuzzy} voltada para um tipo de problema, não descrevendo uma biblioteca genérica. Como trabalhos descritos desta forma, pode-se citar~\cite{sugeno:93}, que utiliza lógica \textit{fuzzy} para a discussão de um metódo para modelagem qualitativa, e~\cite{li:11}, que emprega a lógica \textit{fuzzy} para fazer o gerenciamento de energia em baterias de automóveis híbridos do tipo \textit{plug-in}.
 	
-	Como bibliotecas relacionadas à lógica \textit{fuzzy}, existe uma desenvolvida na linguagem Java, chamada de jFuzzyLogic~\cite{cingolani:12, cingolani:13}. Esta biblioteca é uma implementação de sistemas \textit{fuzzy} que permite projetar controladores de lógica \textit{fuzzy}. Por fim, existe a biblioteca FuzzyGPU~\cite{defour:14}, a qual é o trabalho relacionado mais próximo ao que este artigo apresenta. FuzzyGPU é uma implementação de biblioteca de aritmética \textit{fuzzy} voltada à GPUs.
+	No que diz respeito �s bibliotecas relacionadas a lógica \textit{fuzzy}, existe uma desenvolvida na linguagem Java, chamada de jFuzzyLogic~\cite{cingolani:12, cingolani:13}. Esta biblioteca é uma implementação de sistemas \textit{fuzzy} que permite projetar controladores de lógica \textit{fuzzy}. Por fim, existe a biblioteca FuzzyGPU~\cite{defour:14}, que é o trabalho relacionado mais próximo ao que este artigo apresenta. FuzzyGPU é uma implementação de biblioteca de aritmética \textit{fuzzy} voltada a GPUs.
  	
 \bibliographystyle{sbc}
 \bibliography{wscad}
