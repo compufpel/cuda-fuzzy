@@ -37,25 +37,25 @@ __global__ void kernel_Not(double* array, double* result, int size) {
 */
 double* d_BulkNot(double* v, int size) {
 	
-	double* result = (double*)malloc(sizeof(double) * size);
-	double* d_result; 
-	double* d_array; 
+	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host 
+	double* d_result; // GPU memory result array
+	double* d_array;  // GPU memory input array
 
-	unsigned int memsize = sizeof(double) * size;
+	unsigned int memsize = sizeof(double) * size; // size of arrays of double
 
-	cudaMalloc((void**) &d_result, memsize);
-	cudaMalloc((void**) &d_array, memsize);
+	cudaMalloc((void**) &d_result, memsize); // allocates memory on the GPU to save results
+	cudaMalloc((void**) &d_array, memsize);  // allocates memory on the GPU to transport input data
 	
 
-	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_Not<<< size, size >>>(d_array, d_result, size);
+	kernel_Not<<< size, size >>>(d_array, d_result, size); // Execute Not kernel function 
 
-	cudaDeviceSynchronize();
+	cudaDeviceSynchronize(); // Sync with device
 
-	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost);
+	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
 
-	return result;
+	return result; // Return results
 }
 
 /*___kernel_Not2___
@@ -87,25 +87,24 @@ __global__ void kernel_Not2(double* array, double* result, int size) {
 */
 double* d_BulkNot2(double* v, int size) {
 	
-	double* result = (double*)malloc(sizeof(double) * size);
-	double* d_result; 
-	double* d_array; 
+	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host 
+	double* d_result; // GPU memory result array
+	double* d_array; // GPU memory input array
 
-	unsigned int memsize = sizeof(double) * size;
+	unsigned int memsize = sizeof(double) * size;  // size of arrays of double
 
-	cudaMalloc((void**) &d_result, memsize);
-	cudaMalloc((void**) &d_array, memsize);
+	cudaMalloc((void**) &d_result, memsize); // allocates memory on the GPU to save results
+	cudaMalloc((void**) &d_array, memsize); // allocates memory on the GPU to transport input data
 	
+	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);
+	kernel_Not2<<< size, size >>>(d_array, d_result, size); // Execute Not2 kernel function 
 
-	kernel_Not2<<< size, size >>>(d_array, d_result, size);
+	cudaDeviceSynchronize(); // Sync with device
 
-	cudaDeviceSynchronize();
+	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
 
-	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost);
-
-	return result;
+	return result; // Return results
 }
 
 /*___kernel_Not3___
@@ -137,25 +136,25 @@ __global__ void kernel_Not3(double* array, double* result, int size) {
 */
 double* d_BulkNot3(double* v, int size) {
 	
-	double* result = (double*)malloc(sizeof(double) * size);
-	double* d_result; 
-	double* d_array; 
+	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host 
+	double* d_result; // GPU memory result array
+	double* d_array;  // GPU memory input array
 
-	unsigned int memsize = sizeof(double) * size;
+	unsigned int memsize = sizeof(double) * size; // size of arrays of double
 
-	cudaMalloc((void**) &d_result, memsize);
-	cudaMalloc((void**) &d_array, memsize);
+	cudaMalloc((void**) &d_result, memsize); // allocates memory on the GPU to save results
+	cudaMalloc((void**) &d_array, memsize); // allocates memory on the GPU to transport input data
 	
 
-	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_Not3<<< size, size >>>(d_array, d_result, size);
+	kernel_Not3<<< size, size >>>(d_array, d_result, size);  // Execute Not2 kernel function 
 
-	cudaDeviceSynchronize();
+	cudaDeviceSynchronize(); // Sync with device
 
-	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost);
+	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
 
-	return result;
+	return result; // Return results
 }
 
 /*___kernel_And___
