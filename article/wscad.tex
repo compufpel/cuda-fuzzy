@@ -58,8 +58,6 @@ Resumo aqui.
 \section{Introdução}
 \label{sec:introducao}
 
-%Teste de Sincroniza��o
-
 % Logica fuzzy: colocar onde? %
 
 	Existem diversos casos onde classes de objetos não pertencem totalmente a um conjunto. Baseado nisto, Zadeh definiu a teoria dos conjuntos \textit{fuzzy}~\cite{zadeh:65}, o que visa tratar problemas de imprecisão ao classificar dados no mundo real. Os conjuntos \textit{fuzzy} possuem aplicações em sistemas de controle e de suporte à decisão, onde a descrição do problema não é feita de forma precisa~\cite{weber:03}.
@@ -83,18 +81,19 @@ de dez minutos para três segundos. Outro exemplo relevante é o ganho de desemp
 \section{Lógica Fuzzy}
 \label{sec:logfuzzy}
 
-% Descrição breve, pra que serve, exemplos
-Lógica fuzzy foi criada com base na teoria de conjuntos Fuzzy, a ideia principal de fuzzy é a seguinte: Um valor é verdadeiro (grau 1) ou falsos (grau 0), sendo que o grau pode variar de 0 à 1. A teoria do conjunto fuzzy foi inventada com o objetivo de oferecer ferramentas matemáticas para solucionar problemas imprecisos ou vagos. Dentre as inúmeras aplicações com lógica fuzzy, o projeto IMMO-RATE, é bastante interessante, pois ele permite análise de sustentabilidade em imóveis, considerando questões chaves específicas que utilizam a lógica fuzzy.
+A lógica \textit{fuzzy} foi criada com base na teoria de conjuntos \textit{fuzzy}. A principal ideia da lógica \textit{fuzzy} é aumentar a representação de valores, não restrigindo-se somente aos valores 0 (falso) e 1 (verdadeiro). Um valor na lógica \textit{fuzzy} é representado por um número real que está entre os números 0 e 1 -- e esse número representa o grau de pertinência do valor dentro de um conjunto \textit{fuzzy}~\cite{boclin:06}. A teoria dos conjuntos \textit{fuzzy} foi criada com o propósito de oferecer ferramentas matemáticas que visam solucionar problemas que possuam algumas das seguintes características~\cite{falcao:02}: Incerteza, informações vagas e ambiguidade.
+
+%Lógica fuzzy foi criada com base na teoria de conjuntos Fuzzy, a ideia principal de fuzzy é a seguinte: Um valor é verdadeiro (grau 1) ou falsos (grau 0), sendo que o grau pode variar de 0 à 1. A teoria do conjunto fuzzy foi inventada com o objetivo de oferecer ferramentas matemáticas para solucionar problemas imprecisos ou vagos. Dentre as inúmeras aplicações com lógica fuzzy, o projeto IMMO-RATE, é bastante interessante, pois ele permite análise de sustentabilidade em imóveis, considerando questões chaves específicas que utilizam a lógica fuzzy.
 
 \subsection{Operadores Fuzzy}
 Conjuntos são definidos por uma condição específica que define se um conjunto pertence ou não a um conjunto. Para exemplificar os operados em fuzzy logo abaixo foram utilizados conjuntos A e B.
-Os operadores mais comuns em conjuntos fuzzy são: união 
+Os operadores mais comuns em conjuntos \textit{fuzzy} são: união 
 (A\begin{math} \cup \end{math} B ={ x | x \begin{math}\in \end{math} A \begin{math}\vee \end{math} x \begin{math}\in \end{math} B) e intersecão (A \begin{math} \cap \end{math} B = 
 x | x \begin{math}\in \end{math}A \begin{math}\wedge \end{math} x \begin{math}\in \end{math} B).  
+
 %={x | x ∈ A ∧ x ∈ B}). 
 
 
-% Explicação dos operadores mais comuns (talvez fazer uma correlação com a lógica proposicional / lógica comum)
 
 \section{\libname}
 \label{sec:lib}
@@ -138,6 +137,8 @@ Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{
 \caption{Código de implementação de uma única operação \texttt{BulkAND1}}
 \label{fig:bulkoperation}
 \end{figure}
+
+O código acima é a representação de uma operação efetuada entre o i-ésimo elemento de um \textit{array} com seu correspondente no segundo \textit{array}. O resultado desta operação, gera o i-ésimo elemento do \textit{array} que armazenará os resultados da operação \texttt{Bulk}.
 
 \section{Metodologia}
 \label{sec:metodologia}	
