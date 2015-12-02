@@ -298,28 +298,28 @@ __global__ void kernel_Or(double* array, double* array2, double* result, int siz
 */
 double* d_BulkOr(double* v, double* w, int size) {
 	
-	double* result = (double*)malloc(sizeof(double) * size);
-	double* d_result; 
-	double* d_array; 
-	double* d_array2; 
+	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host
+	double* d_result; // GPU memory result array
+	double* d_array;  // GPU memory input1 array
+	double* d_array2; // GPU memory input2 array
 
-	unsigned int memsize = sizeof(double) * size;
+	unsigned int memsize = sizeof(double) * size; // size of arrays of double
 
-	cudaMalloc((void**) &d_result, memsize);
-	cudaMalloc((void**) &d_array, memsize);
-	cudaMalloc((void**) &d_array2, memsize);
+	cudaMalloc((void**) &d_result, memsize); // allocates memory on the GPU to save results
+	cudaMalloc((void**) &d_array, memsize);  // allocates memory on the GPU to transport input data
+	cudaMalloc((void**) &d_array2, memsize); // allocates memory on the GPU to transport input data
 	
 
-	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);
-	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
+	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice);// send data from Host do Device
 
-	kernel_Or<<< size, size >>>(d_array, d_array2, d_result, size);
+	kernel_Or<<< size, size >>>(d_array, d_array2, d_result, size); // Execute Or kernel function
 
-	cudaDeviceSynchronize();
+	cudaDeviceSynchronize(); // Sync with device
 
-	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost);
+	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
 
-	return result;
+	return result; // Return results
 }
 
 /*___kernel_Or2___
@@ -353,27 +353,27 @@ __global__ void kernel_Or2(double* array, double* array2, double* result, int si
 */
 double* d_BulkOr2(double* v, double* w, int size) {
 	
-	double* result = (double*)malloc(sizeof(double) * size);
-	double* d_result; 
-	double* d_array; 
-	double* d_array2; 
+	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host
+	double* d_result; // GPU memory result array
+	double* d_array; // GPU memory input1 array
+	double* d_array2; // GPU memory input2 array
 
-	unsigned int memsize = sizeof(double) * size;
+	unsigned int memsize = sizeof(double) * size; // size of arrays of double
 
-	cudaMalloc((void**) &d_result, memsize);
-	cudaMalloc((void**) &d_array, memsize);
-	cudaMalloc((void**) &d_array2, memsize);
+	cudaMalloc((void**) &d_result, memsize); // allocates memory on the GPU to save results
+	cudaMalloc((void**) &d_array, memsize);  // allocates memory on the GPU to transport input data
+	cudaMalloc((void**) &d_array2, memsize); // allocates memory on the GPU to transport input2 data
 	
 
-	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);
-	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);  // send data from Host do Device
+	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_Or2<<< size, size >>>(d_array, d_array2, d_result, size);
+	kernel_Or2<<< size, size >>>(d_array, d_array2, d_result, size); // Execute Or kernel function
 
-	cudaDeviceSynchronize();
+	cudaDeviceSynchronize(); // Sync with device
 
-	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost);
+	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
 
-	return result;
+	return result; // Return results
 }
 
