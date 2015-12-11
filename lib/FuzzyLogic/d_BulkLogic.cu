@@ -7,6 +7,8 @@
 
 #include "d_BulkLogic.cuh"
 
+int _threadsPerBlock = 256;
+
 /*___kernel_Not___
 *   Function: Implement the kernel of parallel version of Fuzzy not operation (1-Input).
 *   Parameters:
@@ -36,6 +38,8 @@ __global__ void kernel_Not(double* array, double* result, int size) {
 *   Exception case: -
 */
 double* d_BulkNot(double* v, int size) {
+
+	int blocksPerGrid = size % _threadsPerBlock == 0 ? size /_threadsPerBlock : size /_threadsPerBlock + 1;
 	
 	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host 
 	double* d_result; // GPU memory result array
@@ -49,11 +53,14 @@ double* d_BulkNot(double* v, int size) {
 
 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_Not<<< size, size >>>(d_array, d_result, size); // Execute Not kernel function 
+	kernel_Not<<< blocksPerGrid, _threadsPerBlock >>>(d_array, d_result, size); // Execute Not kernel function 
 
 	cudaDeviceSynchronize(); // Sync with device
 
 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
+
+	cudaFree(d_result);
+	cudaFree(d_array);
 
 	return result; // Return results
 }
@@ -87,6 +94,8 @@ __global__ void kernel_Not2(double* array, double* result, int size) {
 */
 double* d_BulkNot2(double* v, int size) {
 	
+	int blocksPerGrid = size % _threadsPerBlock == 0 ? size /_threadsPerBlock : size /_threadsPerBlock + 1;
+
 	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host 
 	double* d_result; // GPU memory result array
 	double* d_array; // GPU memory input array
@@ -98,11 +107,14 @@ double* d_BulkNot2(double* v, int size) {
 	
 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_Not2<<< size, size >>>(d_array, d_result, size); // Execute Not2 kernel function 
+	kernel_Not2<<< blocksPerGrid, _threadsPerBlock >>>(d_array, d_result, size); // Execute Not2 kernel function 
 
 	cudaDeviceSynchronize(); // Sync with device
 
 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
+
+	cudaFree(d_result);
+	cudaFree(d_array);
 
 	return result; // Return results
 }
@@ -136,6 +148,8 @@ __global__ void kernel_Not3(double* array, double* result, int size) {
 */
 double* d_BulkNot3(double* v, int size) {
 	
+	int blocksPerGrid = size % _threadsPerBlock == 0 ? size /_threadsPerBlock : size /_threadsPerBlock + 1;
+
 	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host 
 	double* d_result; // GPU memory result array
 	double* d_array;  // GPU memory input array
@@ -148,11 +162,14 @@ double* d_BulkNot3(double* v, int size) {
 
 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_Not3<<< size, size >>>(d_array, d_result, size);  // Execute Not3 kernel function 
+	kernel_Not3<<< blocksPerGrid, _threadsPerBlock >>>(d_array, d_result, size);  // Execute Not3 kernel function 
 
 	cudaDeviceSynchronize(); // Sync with device
 
 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
+
+	cudaFree(d_result);
+	cudaFree(d_array);
 
 	return result; // Return results
 }
@@ -187,6 +204,8 @@ __global__ void kernel_And(double* array, double* array2, double* result, int si
 *   Exception case: -
 */
 double* d_BulkAnd(double* v, double* w, int size) {
+
+	int blocksPerGrid = size % _threadsPerBlock == 0 ? size /_threadsPerBlock : size /_threadsPerBlock + 1;
 	
 	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host 
 	double* d_result;  // GPU memory result array
@@ -203,11 +222,15 @@ double* d_BulkAnd(double* v, double* w, int size) {
 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);  // send data from Host do Device
 	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_And<<< size, size >>>(d_array, d_array2, d_result, size); // Execute And kernel function
+	kernel_And<<< blocksPerGrid, _threadsPerBlock >>>(d_array, d_array2, d_result, size); // Execute And kernel function
 
 	cudaDeviceSynchronize(); // Sync with device
 
 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
+
+	cudaFree(d_result);
+	cudaFree(d_array);
+	cudaFree(d_array2);
 
 	return result; // Return results
 }
@@ -242,6 +265,8 @@ __global__ void kernel_And2(double* array, double* array2, double* result, int s
 *   Exception case: -
 */
 double* d_BulkAnd2(double* v, double* w, int size) {
+
+	int blocksPerGrid = size % _threadsPerBlock == 0 ? size /_threadsPerBlock : size /_threadsPerBlock + 1;
 	
 	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host
 	double* d_result;  // GPU memory result array
@@ -258,11 +283,15 @@ double* d_BulkAnd2(double* v, double* w, int size) {
 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);  // send data from Host do Device
 	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_And<<< size, size >>>(d_array, d_array2, d_result, size); // Execute And2 kernel function
+	kernel_And<<< blocksPerGrid, _threadsPerBlock >>>(d_array, d_array2, d_result, size); // Execute And2 kernel function
 
 	cudaDeviceSynchronize();  // Sync with device
 
 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
+
+	cudaFree(d_result);
+	cudaFree(d_array);
+	cudaFree(d_array2);
 
 	return result;  // Return results
 }
@@ -297,6 +326,8 @@ __global__ void kernel_Or(double* array, double* array2, double* result, int siz
 *   Exception case: -
 */
 double* d_BulkOr(double* v, double* w, int size) {
+
+	int blocksPerGrid = size % _threadsPerBlock == 0 ? size /_threadsPerBlock : size /_threadsPerBlock + 1;
 	
 	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host
 	double* d_result; // GPU memory result array
@@ -313,11 +344,15 @@ double* d_BulkOr(double* v, double* w, int size) {
 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice);// send data from Host do Device
 
-	kernel_Or<<< size, size >>>(d_array, d_array2, d_result, size); // Execute Or kernel function
+	kernel_Or<<< blocksPerGrid, _threadsPerBlock >>>(d_array, d_array2, d_result, size); // Execute Or kernel function
 
 	cudaDeviceSynchronize(); // Sync with device
 
 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
+
+	cudaFree(d_result);
+	cudaFree(d_array);
+	cudaFree(d_array2);
 
 	return result; // Return results
 }
@@ -352,6 +387,8 @@ __global__ void kernel_Or2(double* array, double* array2, double* result, int si
 *   Exception case: -
 */
 double* d_BulkOr2(double* v, double* w, int size) {
+
+	int blocksPerGrid = size % _threadsPerBlock == 0 ? size /_threadsPerBlock : size /_threadsPerBlock + 1;
 	
 	double* result = (double*)malloc(sizeof(double) * size); // allocates memory in Host
 	double* d_result; // GPU memory result array
@@ -368,11 +405,15 @@ double* d_BulkOr2(double* v, double* w, int size) {
 	cudaMemcpy(d_array, v, memsize, cudaMemcpyHostToDevice);  // send data from Host do Device
 	cudaMemcpy(d_array2, w, memsize, cudaMemcpyHostToDevice); // send data from Host do Device
 
-	kernel_Or2<<< size, size >>>(d_array, d_array2, d_result, size); // Execute Or kernel function
+	kernel_Or2<<< blocksPerGrid, _threadsPerBlock >>>(d_array, d_array2, d_result, size); // Execute Or kernel function
 
 	cudaDeviceSynchronize(); // Sync with device
 
 	cudaMemcpy(result, d_result, memsize, cudaMemcpyDeviceToHost); // Copy results to Host
+
+	cudaFree(d_result);
+	cudaFree(d_array);
+	cudaFree(d_array2);
 
 	return result; // Return results
 }
