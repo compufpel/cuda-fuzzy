@@ -146,11 +146,13 @@ Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{
 \label{fig:bulkoperation}
 \end{figure}
 
-O código acima é a representação de uma operação efetuada entre o i-ésimo elemento de um \textit{array} com seu correspondente no segundo \textit{array}. O resultado desta operação gera o i-ésimo elemento do \textit{array}, o qual armazenará os resultados da operação \texttt{Bulk}.
+	O código acima é a representação de uma operação efetuada entre o i-ésimo elemento de um \textit{array} com seu correspondente no segundo \textit{array}. O resultado desta operação gera o i-ésimo elemento do \textit{array}, o qual armazenará os resultados da operação \texttt{Bulk}. Ao final da execução de todas as operações que trabalham com cada elemento do \textit{array}, tem-se todos os resultados parciais no \textit{array} de resultado.
 
 \section{Metodologia}
-\label{sec:metodologia}	
+\label{sec:metodologia}
 
+	A fim de extrair os resultados deste artigo, foi proposta uma metodologia. Após ser feita a implementação da biblioteca \libname, também foi construída uma versão sequencial da biblioteca a fim de comparar o ganho de desempenho paralelizando o código.
+	
 \section{Resultados e Discussão}	
 \label{sec:resultados}	
 
