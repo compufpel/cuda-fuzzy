@@ -299,7 +299,7 @@ SCENARIO( "We can make a bulk of fuzzy logics", "[fuzzy]" ) {
 			
 			double* result = d_BulkNot2(array, 5);
 			
-			THEN( "the result should be 0.6" ) {
+			THEN( "the result should be 0" ) {
 				REQUIRE( result[0] == 0 );
 				REQUIRE( result[1] == 0 );
 			}
@@ -307,23 +307,151 @@ SCENARIO( "We can make a bulk of fuzzy logics", "[fuzzy]" ) {
 		
 	}
 
-	// GIVEN( "2 vector of doubles" ) {
+	GIVEN( "a vector of doubles" ) {
 		
-	//     BulkLogic *bulk = new BulkLogic();
-	//     vector<double> v (1000, 0.3);
-	//     vector<double> v2 (1000, 0.5);
+		double* array = (double*)malloc(sizeof(double) * 5);
+		array[0] = 1;
+		array[1] = 1;
+		array[2] = 1;
+		array[3] = 1;
+		array[4] = 1;
+
+		double* array2 = (double*)malloc(sizeof(double) * 5);
+		array2[0] = 1;
+		array2[1] = 1;
+		array2[2] = 1;
+		array2[3] = 1;
+		array2[4] = 1;
 		
 		
-	//     WHEN( "we use the and operator on both" ) {
+		WHEN( "we use the and operator with vectors" ) {
 			
-	//         vector<double> result = bulk->And(v, v2);
+			double* result = d_BulkAnd(array, array2, 5);
 			
-	//         THEN( "the result should be 0.6" ) {
-	//             REQUIRE( result[0] == 0.3 );
-	//             REQUIRE( result[1] == 0.3 );
-	//         }
-	//     }
+			THEN( "the result should be 0" ) {
+				REQUIRE( result[0] == 1 );
+				REQUIRE( result[1] == 1 );
+			}
+		}
 		
-	// }
+	}
+
+	GIVEN( "a vector of doubles" ) {
+		
+		double* array = (double*)malloc(sizeof(double) * 5);
+		array[0] = 0;
+		array[1] = 0;
+		array[2] = 0;
+		array[3] = 0;
+		array[4] = 0;
+
+		double* array2 = (double*)malloc(sizeof(double) * 5);
+		array2[0] = 1;
+		array2[1] = 1;
+		array2[2] = 1;
+		array2[3] = 1;
+		array2[4] = 1;
+		
+		
+		WHEN( "we use the and operator with vectors" ) {
+			
+			double* result = d_BulkAnd(array, array2, 5);
+			
+			THEN( "the result should be 0" ) {
+				REQUIRE( result[0] == 0 );
+				REQUIRE( result[1] == 0 );
+			}
+		}
+		
+	}
+
+	GIVEN( "a vector of doubles" ) {
+		
+		double* array = (double*)malloc(sizeof(double) * 5);
+		array[0] = 0;
+		array[1] = 0;
+		array[2] = 0;
+		array[3] = 0;
+		array[4] = 0;
+
+		double* array2 = (double*)malloc(sizeof(double) * 5);
+		array2[0] = 1;
+		array2[1] = 1;
+		array2[2] = 1;
+		array2[3] = 1;
+		array2[4] = 1;
+		
+		
+		WHEN( "we use the And2 operator with vectors" ) {
+			
+			double* result = d_BulkAnd2(array, array2, 5);
+			
+			THEN( "the result should be 0" ) {
+				REQUIRE( result[0] == 0 );
+				REQUIRE( result[1] == 0 );
+			}
+		}
+		
+	}
+
+	GIVEN( "a vector of doubles" ) {
+		
+		double* array = (double*)malloc(sizeof(double) * 5);
+		array[0] = 0;
+		array[1] = 0;
+		array[2] = 0;
+		array[3] = 0;
+		array[4] = 0;
+
+		double* array2 = (double*)malloc(sizeof(double) * 5);
+		array2[0] = 1;
+		array2[1] = 1;
+		array2[2] = 1;
+		array2[3] = 1;
+		array2[4] = 1;
+		
+		
+		WHEN( "we use the Or operator with vectors" ) {
+			
+			double* result = d_BulkOr(array, array2, 5);
+			
+			THEN( "the result should be 0" ) {
+				REQUIRE( result[0] == 1 );
+				REQUIRE( result[1] == 1 );
+			}
+		}
+		
+	}
+
+	GIVEN( "a vector of doubles" ) {
+		
+		double* array = (double*)malloc(sizeof(double) * 5);
+		array[0] = 0;
+		array[1] = 0;
+		array[2] = 0;
+		array[3] = 0;
+		array[4] = 0;
+
+		double* array2 = (double*)malloc(sizeof(double) * 5);
+		array2[0] = 0;
+		array2[1] = 0;
+		array2[2] = 0;
+		array2[3] = 0;
+		array2[4] = 0;
+		
+		
+		WHEN( "we use the Or operator with vectors" ) {
+			
+			double* result = d_BulkOr2(array, array2, 5);
+			
+			THEN( "the result should be 0" ) {
+				REQUIRE( result[0] == 0 );
+				REQUIRE( result[1] == 0 );
+			}
+		}
+		
+	}
+
+	
 }
 
