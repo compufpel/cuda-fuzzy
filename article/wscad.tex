@@ -151,8 +151,11 @@ Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{
 \section{Metodologia}
 \label{sec:metodologia}
 
-	A fim de extrair os resultados deste artigo, foi proposta uma metodologia. Após ser feita a implementação da biblioteca \libname, também foi construída uma versão sequencial da biblioteca a fim de comparar o ganho de desempenho paralelizando o código.
+	A fim de extrair os resultados deste artigo, foi proposta uma metodologia. Após ser feita a implementação da biblioteca \libname, também foi construída uma versão sequencial da biblioteca a fim de comparar o ganho de desempenho paralelizando o código. Esta versão, em vez de executar em paralelo as operações dentro de um \textit{array}, é efetuado o cálculo de uma operação por vez.
 	
+	Foi feita então uma bateria de execuções para a geração dos resultados. Cada operação \texttt{Bulk} foi executada \change{Não sabemos} XX vezes, em sua versão paralelizada usando GPU, bem como a versão sequencial. Para extrair os tempos de execução e comparar as duas versões, obteve-se a média do total de execuções, além de efetuar o teste t de Student para comprovar a diferença estatística entre as médias. Por \change{Será feito? Não sei} fim, foram feitas análises estatísticas quanto à variabilidade dos tempos de execução, fazendo uso de gráficos de dispersão e de caixa para tal fim.
+	
+
 \section{Resultados e Discussão}	
 \label{sec:resultados}	
 
