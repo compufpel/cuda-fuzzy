@@ -22,7 +22,7 @@ frame=single
 
 \sloppy
 
-\title{\libname: Uma biblioteca de lógica \textit{fuzzy} direcionada à GPUs}
+\title{\libname: Uma biblioteca de lógica \textit{fuzzy} direcionada a GPUs}
 
 % Edevaldo Braga dos Santos
 % Giovane de Oliveira Torres
@@ -52,7 +52,7 @@ Pelotas, RS - Brasil\\
 
 \begin{resumo}
 
-O trabalho desenvolvido foi implementar uma biblioteca de lógica fuzzy voltada às GPUs, de maneira a aproveitar o paralelismo disponível neste tipo de arquiteturas. Algumas operações foram implementadas em suas versões sequenciais e paralelas, a fim de extrair os resultados deste artigo. Os resultados obtidos mostram que as operações que efetuaram mais cálculos matemáticos tendem a ter melhor desempenho, o que é potencializado incrementando o número de operações que são executadas.
+O trabalho desenvolvido foi de implementar uma biblioteca de lógica fuzzy voltada às GPUs, de maneira a aproveitar o paralelismo disponível neste tipo de arquiteturas. Algumas operações foram implementadas em suas versões sequenciais e paralelas, a fim de extrair os resultados deste artigo. Os resultados obtidos mostram que aquelas operações que efetuaram mais cálculos matemáticos tendem a ter melhor desempenho, o que é potencializado pelo incremento do número de operações que são executadas.
 
 \end{resumo}
 
@@ -61,7 +61,7 @@ O trabalho desenvolvido foi implementar uma biblioteca de lógica fuzzy voltada 
 
 % Logica fuzzy: colocar onde? %
 
-	Existem diversos casos onde classes de objetos não pertencem totalmente a um conjunto. Baseado nisso, Zadeh definiu a teoria dos conjuntos \textit{fuzzy}~\cite{zadeh:65}, que visa tratar problemas de imprecisão ao classificar dados no mundo real. Os conjuntos \textit{fuzzy} possuem aplicações em sistemas de controle e de suporte a decisão, onde a descrição do problema não é feita de forma precisa~\cite{weber:03}.
+	Existem diversos casos onde classes de objetos não pertencem totalmente a um conjunto. Baseado nisso, Zadeh definiu a teoria dos conjuntos \textit{fuzzy}~\cite{zadeh:65}, que visa tratar problemas de imprecisão ao classificar dados no mundo real. Os conjuntos \textit{fuzzy} possuem aplicações em sistemas de controle e de suporte à decisão, onde a descrição do problema não é feita de forma precisa~\cite{weber:03}.
 	
 	Utilizando os conhecimentos provenientes dos conjuntos \textit{fuzzy}, se tem a base para a utilização da lógica \textit{fuzzy}, sendo construída a partir da lógica proposicional. Com isso, os operadores foram definidos a partir dos já estabelecidos na lógica clássica, com a adição de outros, para fins práticos~\cite{tanscheit:04}. Uma característica interessante, que diferencia a lógica tradicional da \textit{fuzzy}, é que na primeira os valores que utilizados atendem à condição de serem verdadeiros ou falsos (0 ou 1). Já na segunda, trabalha-se com conjuntos \textit{fuzzy}, os quais podem assumir um valor que pertence ao intervalo $[0, 1]$. Isso permite que um conjunto \textit{fuzzy} possa ser representado por uma infinidade de valores~\cite{klir:95}.	
 	
@@ -70,9 +70,9 @@ O trabalho desenvolvido foi implementar uma biblioteca de lógica fuzzy voltada 
 	Com a finalidade de obter computação com bom desempenho, se torna importante o uso dos vários núcleos de processamento, disponibilizados nos sistemas de computação atuais, visando um melhor aproveitamento do paralelismo do sistema computacional. Neste contexto, encaixam-se as GPUs (\textit{Graphical Processor Units}), que são componentes com alto poder de paralelismo~\cite{sengupta:07}. Porém, é importante ressaltar que as GPUs são reservadas a obter bom desempenho com aplicações que possuem determinadas características~\cite{owens:08}, que incluem: (i) Requisitos computacionais excessivos, (ii) Paralelismo nas aplicações e (iii) maior importância do \textit{throughput} em detrimento da latência. Destacam-se ainda alguns exemplos práticos, bem-sucedidos, que utilizam CUDA:
 Através do uso do poder computacional de CUDA, para análise do fluxo de tráfego aéreo, foi possível reduzir o tempo de análise do tráfego aéreo nacional de dez minutos para três segundos. Outro exemplo relevante é o ganho de desempenho em simulações moleculares NAMD (dinâmica molecular em nanoescala), nelas o ganho de desempenho foi possível graças às arquiteturas paralelas das GPUs~\cite{nvidia:15}.
 
-	Tendo sido discutidos estes conceitos, o objetivo deste trabalho é descrever uma biblioteca de lógica \textit{fuzzy} voltada para GPUs, a fim de verificar a forma como pode ser efetuada uma implementação que consiga extrair paralelismo deste tipo de arquiteturas. Com isto, fez-se a implementação da biblioteca, e então também desenvolveu-se uma versão sequencial para obter os principais resultados, comparando as duas implementações.
+	Tendo sido discutidos estes conceitos, o objetivo deste trabalho é descrever uma biblioteca de lógica \textit{fuzzy} voltada para GPUs, a fim de verificar a forma como pode ser efetuada uma implementação que consiga extrair paralelismo deste tipo de arquiteturas. Com isso, fez-se a implementação da biblioteca, e então também desenvolveu-se uma versão sequencial para obter os principais resultados, comparando estas duas implementações.
 	
-	Os resultados mostrados neste trabalham mostram que as operações em geral obtiveram algum tipo de \textit{speedup} na implementação paralela sobre a sequencial. Os melhores resultados encontraram-se nas operações que envolviam mais complexidade em cálculos matemáticos e com maiores tamanhos de \textit{array} considerados. Esta última ocorrida devido à maneira que a GPU gerencia o paralelismo, visto que é necessário bastante quantidade de operações para que haja eficiência ao executar as computações.
+	Os resultados obtidos neste trabalho mostram que as operações em geral tiveram algum tipo de \textit{speedup} na implementação paralela sobre a sequencial. Os melhores resultados encontraram-se nas operações que envolviam mais complexidade em cálculos matemáticos e maiores tamanhos de \textit{array} considerados. Esta última em virtude da maneira como a GPU gerencia o paralelismo, visto que é necessária uma grande quantidade de operações para que haja eficiência ao executar as computações.
 	
 	O restante deste artigo está dividido da seguinte maneira: A Seção~\ref{sec:logfuzzy} fala sobre a lógica fuzzy, que é a base para a construção deste trabalho. Na Seção~\ref{sec:lib}, é descrita a implementação efetuada da biblioteca~\libname. A Seção~\ref{sec:metodologia} destina-se a explicar a metodologia empregada para a execução de testes na biblioteca. Na Seção~\ref{sec:resultados} são exibidos e discutidos os principais resultados obtidos por este trabalho, de onde se tiram as principais conclusões, observadas na Seção~\ref{sec:conclusoes}, a qual ainda mostra possíveis trabalhos futuros. Por fim, na Seção~\ref{sec:trabalhos} faz-se uma breve discussão sobre os trabalhos que relacionam-se ao escopo deste artigo.
 
@@ -150,9 +150,9 @@ Assim, as operações são feitas sobre uma função que leva o prefixo \texttt{
 \section{Metodologia}
 \label{sec:metodologia}
 
-	A fim de extrair os resultados deste artigo, foi proposta uma metodologia. Após ser feita a implementação da biblioteca \libname, também foi construída uma versão sequencial da biblioteca a fim de comparar o ganho de desempenho paralelizando o código. Esta versão, em vez de executar em paralelo as operações dentro de um \textit{array}, é efetuado o cálculo de uma operação por vez.
+	A fim de extrair os resultados deste artigo, foi proposta uma metodologia. Após ser feita a implementação da biblioteca \libname, também foi construída uma versão sequencial da biblioteca a fim de comparar o ganho de desempenho paralelizando o código. Esta versão, em vez de executar em paralelo as operações dentro de um \textit{array}, efetua o cálculo de uma operação por vez.
 	
-	Foi feita então uma bateria de execuções para a geração dos resultados. Cada operação \texttt{Bulk} foi executada 30 vezes, em sua versão paralelizada usando GPU, bem como a versão sequencial. Em cada operação, foi testado diferentes tamanhos do \textit{array} usado nas operações \texttt{Bulk}, a fim de avaliar também o impacto que a variação neste atributo acarreta no desempenho da biblioteca. Os tamanhos de array considerados foram potências de 10, iniciando em 10 mil e terminando em 100 milhões de operações. Para extrair os tempos de execução e comparar as duas versões, obteve-se a média do total de execuções, além de efetuar o teste t de Student para comprovar a diferença estatística entre as médias.
+	Foi feita então uma bateria de execuções para a geração dos resultados. Cada operação \texttt{Bulk} foi executada 30 vezes, em sua versão paralelizada usando GPU, bem como a versão sequencial. Em cada operação foram testados diferentes tamanhos do \textit{array} usado nas operações \texttt{Bulk}, a fim de avaliar também o impacto que a variação neste atributo acarreta no desempenho da biblioteca. Os tamanhos de array considerados foram potências de 10, iniciando em 10 mil e terminando em 100 milhões de operações. Para extrair os tempos de execução e comparar as duas versões, obteve-se a média do total de execuções, além de efetuar o teste t de Student para comprovar a diferença estatística entre as médias.
 	
 	Os testes foram executados sobre uma máquina com processador Intel(R) Core(TM) i7-3630QM CPU 2.40GHz, com 24 GB de Memória RAM, utilizando o sistema operacional Linux Mint 17.3. A placa de vídeo empregada nas simulações foi a GeForce GTX 670, sendo usado a versão 7.5 do CUDA.
 	
@@ -175,7 +175,7 @@ Em contrapartida, as operações que envolviam pouco cálculo matemático não o
 \section{Conclusões e Trabalhos Futuros}
 \label{sec:conclusoes}
 
-	O trabalho desenvolvido procurou construir uma	biblioteca de lógica \textit{fuzzy} voltada à GPU. Com isto, o trabalho focou-se em desenvolver esta biblioteca procurando explorar o paralelismo fornecido pelas arquiteturas GPU. Com isto, a fim de gerar resultados para avaliar a biblioteca também foi construída uma versão sequencial da mesma para comparações.
+	O trabalho desenvolvido procurou construir uma	biblioteca de lógica \textit{fuzzy} voltada à GPU. Com isto, o trabalho focou-se em desenvolver esta biblioteca procurando explorar o paralelismo fornecido pelas arquiteturas GPU. Com isso, a fim de gerar resultados para avaliar a biblioteca, também foi construída uma versão sequencial da mesma, para comparações.
 	
 	Os resultados mostraram que, para uma operação \textit{fuzzy} obter bons resultados em GPU, a mesma deve possuir uma boa quantidade de cálculos -- comprovado pelo fato de que as operações NOT3 e NOT2 (Que envolvem cálculos de potência e raiz) foram as que obtiveram melhores \textit{speedups} em relação à versão sequencial. Já as demais operações, não obtiveram \textit{speedups} maiores que 2, sendo operações que não possuem grande complexidade no cálculo matemático, e.g. a operação NOT que é uma subtração simples. Existe também outro fator que influencia os \textit{speedups}, que foi o tamanho do \textit{array} executado entre as operações -- Quanto mais operações poderem ser executadas em paralelo, melhor desempenho a biblioteca em GPU obterá, sendo que isto restringe-se à capacidade da GPU.
 	
